@@ -1,24 +1,31 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Best Movie rating</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- start plugins -->
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-<script>
-$(function () {
-	$('#datepick').datepicker();
-});
-</script>
+	<title>Best Movie rating</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Movie_store" />
+	<script type="application/x-javascript">
+		 addEventListener("load", function() { 
+		 	setTimeout(hideURLbar, 0); 
+		 }, false); 
+		 function hideURLbar(){ 
+		 	window.scrollTo(0,1); 
+		 } 
+	</script>
+	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- start plugins -->
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="js/validate.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<script>
+		$(function () {
+			$('#datepick').datepicker();
+		});
+	</script>
 </head>
 <body>
 <div class="container">
@@ -29,51 +36,48 @@ $(function () {
 	      <div class="content">
       	     <div class="register">
 		  	  <form> 
-				 <div class="register-top-grid">
+				<div class="register-top-grid">
 					<h3>Personal Information</h3>
 					 <div>
 						<span>First Name<label>*</label></span>
-						<input type="text"> 
+						<input type="text" id="fname"> 
 					 </div>
 					 <div>
 						<span>Last Name<label>*</label></span>
-						<input type="text"> 
+						<input type="text" id="lname"> 
 					 </div>
 					 <div>
 						 <span>Email Address<label>*</label></span>
-						 <input type="text"> 
+						 <input type="text" id="email"> 
 					 </div>
 					 <div>
 						<span>Date of Birth<label>*</label></span>
-        				<input id="datepick" size="16" type="text" value="12-02-2012"/>
+        				<input id="datepick" size="16" type="text"/>
       				</div>
-					 <div class="clearfix"> </div>
-					   <a class="news-letter" href="#">
-						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
-					   </a>
-					 </div>
-				     <div class="register-bottom-grid">
-						    <h3>Login Information</h3>
-							 <div>
-								<span>Password<label>*</label></span>
-								<input type="text">
-							 </div>
-							 <div>
-								<span>Confirm Password<label>*</label></span>
-								<input type="text">
-							 </div>
-							 <div class="clearfix"> </div>
-					 </div>
-				</form>
+				</div>
 				<div class="clearfix"> </div>
-				<div class="register-but">
-				   <form>
+				<div class="register-bottom-grid">
+				    <h3>Login Information</h3>
+					 <div>
+						<span>Username<label>*</label></span>
+						<input type="text" id="username">
+					 </div>
+					 <div>
+						<span>Password<label>*</label></span>
+						<input type="password" id="password"/>
+					 </div>
+					 <div class="clearfix"> </div>
+				</div>
+			  </form>
+			  <div class="clearfix"> </div>
+			  <div class="register-but">
+				<form>
 					   <input type="submit" value="submit">
 					   <div class="clearfix"> </div>
-				   </form>
-				</div>
+				</form>
+			  </div>
 		   </div>
-           </div>
+        </div>
     </div>
 </div>
 <div class="container"> 
