@@ -1285,6 +1285,15 @@ text-transform: uppercase;
 	padding:10px;
 	-webkit-appearance: none;
 }
+
+.login-right input[type="password"] {
+	border: 1px solid #E4E4E4;
+	outline-color:#d8232a;
+	width: 96%;
+	font-size:0.8125em;
+	padding:10px;
+	-webkit-appearance: none;
+}
 .login-right input[type="submit"] {
 	background: #d8232a;
 	color: #FFF;
@@ -1339,6 +1348,15 @@ p.cart {
 	font-size:1em;
 }
 .register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+	border: 1px solid #EEE;
+	outline-color:#FF5B36;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+	-webkit-appearance: none;
+}
+
+.register-top-grid input[type="password"], .register-bottom-grid input[type="password"] {
 	border: 1px solid #EEE;
 	outline-color:#FF5B36;
 	width: 96%;
