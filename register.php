@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/validate.js"></script>
+	<script type="text/javascript" src="js/register.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<script>
 		$(function () {
@@ -72,7 +73,7 @@
 			  <div class="clearfix"> </div>
 			  <div class="register-but">
 				<form>
-					   <input type="submit" value="submit">
+					   <input type="button" value="submit" id="submitformbutton">
 					   <div class="clearfix"> </div>
 				</form>
 			  </div>
