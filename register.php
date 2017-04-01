@@ -6,12 +6,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Movie_store" />
 	<script type="application/x-javascript">
-		 addEventListener("load", function() { 
-		 	setTimeout(hideURLbar, 0); 
-		 }, false); 
-		 function hideURLbar(){ 
-		 	window.scrollTo(0,1); 
-		 } 
+		 addEventListener("load", function() {
+		 	setTimeout(hideURLbar, 0);
+		 }, false);
+		 function hideURLbar(){
+		 	window.scrollTo(0,1);
+		 }
 	</script>
 	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -20,7 +20,6 @@
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/validate.js"></script>
-	<script type="text/javascript" src="strength.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<script>
 		$(function () {
@@ -36,20 +35,20 @@
 		</div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form> 
+		  	  <form>
 				<div class="register-top-grid">
 					<h3>Personal Information</h3>
 					 <div>
 						<span>First Name<label>*</label></span>
-						<input type="text" id="fname"> 
+						<input type="text" id="fname">
 					 </div>
 					 <div>
 						<span>Last Name<label>*</label></span>
-						<input type="text" id="lname"> 
+						<input type="text" id="lname">
 					 </div>
 					 <div>
 						 <span>Email Address<label>*</label></span>
-						 <input type="text" id="email"> 
+						 <input type="text" id="email">
 					 </div>
 					 <div>
 						<span>Date of Birth<label>*</label></span>
@@ -81,10 +80,10 @@
         </div>
     </div>
 </div>
-<div class="container"> 
+<div class="container">
 <footer id="footer">
     <?php include('footer.php');?>
 </footer>
-</div>		
+</div>
 </body>
 </html>
