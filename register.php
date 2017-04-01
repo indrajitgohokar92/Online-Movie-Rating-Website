@@ -23,7 +23,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<script>
 		$(function () {
-			$('#datepick').datepicker();
+			$('#dob').datepicker();
 		});
 	</script>
 </head>
@@ -52,7 +52,7 @@
 					 </div>
 					 <div>
 						<span>Date of Birth<label>*</label></span>
-        				<input id="datepick" size="16" type="text"/>
+        				<input id="dob" size="16" type="text"/>
       				</div>
 				</div>
 				<div class="clearfix"> </div>

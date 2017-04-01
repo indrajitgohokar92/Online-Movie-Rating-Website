@@ -7,14 +7,14 @@ $(document).ready(function() {
 
 	var firstValidator = fieldValidator(
 			$('#fname'),"The First name must contain only alphabetical characters",function(input) {
-				check_fname = /^[0-9A-Za-z]+$/;
+				check_fname = /^[A-Za-z]+$/;
 				return check_fname.test(input);
 			}
 	);
 
 	var lastValidator = fieldValidator(
 			$('#lname'),"The Last name must contain only alphabetical characters",function(input) {
-				check_lname = /^[0-9A-Za-z]+$/;
+				check_lname = /^[A-Za-z]+$/;
 				return check_lname.test(input);
 			}
 	);
@@ -28,9 +28,9 @@ $(document).ready(function() {
 	);
 
 	var dobValidator = fieldValidator(
-			$('#datepick'),"Enter the Date of Birth",
+			$('#dob'),"Enter the Date of Birth",
 			function(input) {
-				return input.length > 1;
+				return input.length > 0;
 			}
 	);
 
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 var validateField = function(fieldValue, infoMessage, validateFunction) {
 	if (fieldValue.is(':last-child')) {
-		fieldValue.parent().append("<span></span>");
+		fieldValue.parent().append("<i></i>");
 	}
 
 	var formStatus = fieldValue.next();
@@ -83,10 +83,8 @@ var validateField = function(fieldValue, infoMessage, validateFunction) {
 	if (!inputValue) {
 		formStatus.text("");
 	} else if (validateFunction(fieldValue.val())) {
-		formStatus.text("OK");
-		formStatus.addClass("ok");
+		formStatus.text("Success!");
 	} else {
-		formStatus.text("Error");
-		formStatus.addClass("error");
+		formStatus.text("Error!");
 	}
 };
