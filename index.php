@@ -4,7 +4,7 @@
 <title>Best Movie rating</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -61,7 +61,7 @@ $(function () {
 			    	</div>
 			    	<div class="col-md-3 grid_1">
 			    		<ul class="list_1 list_2">
-			    			<li><i class="icon1"> </i><p>2,548</p></li>
+			    			<li><i class="icon1"> </i><p>1,548</p></li>
 			    			<li><i class="icon2"> </i><p>215</p></li>
 			    			<li><i class="icon3"> </i><p>546</p></li>
 			    		</ul>
@@ -71,12 +71,6 @@ $(function () {
 		<div class="content">
 			<div class="box_1">
 			 <h1 class="m_2">Featurd Movies</h1>
-			 <div class="search">
-		    <form>
-				<input type="text" value="Search..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-				<input type="submit" value="">
-		    </form>
-		</div>
 		<div class="clearfix"> </div>
 		</div>
 		<div class="box_2">
@@ -107,7 +101,7 @@ $(function () {
 			   <div class="col-md-6 grid_7">
 				   <div class="col_2">
 				   	    <ul class="list_4">
-			    			<li><i class="icon1"> </i><p>2,548</p></li>
+			    			<li><i class="icon1"> </i><p>1,548</p></li>
 			    			<li><i class="icon2"> </i><p>215</p></li>
 			    			<li><i class="icon3"> </i><p>546</p></li>
 			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""/></p></li>
@@ -164,7 +158,7 @@ $(function () {
 			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
 			    			<div class="clearfix"> </div>
 			    		</ul>
-			    		
+
 				   </div>
 			   </div>
 			   <div class="col-md-6 m_6"><a href="single.php">
@@ -186,7 +180,7 @@ $(function () {
 			    			<li><i class="icon1"> </i><p>2,548</p></li>
 			    			<li><i class="icon2"> </i><p>215</p></li>
 			    			<li><i class="icon3"> </i><p>546</p></li>
-			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating2.png" alt=""></p></li>
 			    			<li>Release : &nbsp;<span class="m_4">Mar 15, 2015</span> </li>
 			    			<div class="clearfix"> </div>
 			    		</ul>
@@ -199,10 +193,10 @@ $(function () {
 	</div>
 </div>
 
-<div class="container"> 
+<div class="container">
 <footer id="footer">
     <?php include('footer.php');?>
 </footer>
-</div>		
+</div>
 </body>
 </html>
