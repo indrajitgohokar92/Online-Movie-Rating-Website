@@ -30,7 +30,7 @@ $(document).ready(function() {
 	var dobValidator = fieldValidator(
 			$('#dob'),"Enter the Date of Birth",
 			function(input) {
-				return input.length > 0;
+				return input.length > 1;
 			}
 	);
 
@@ -43,38 +43,38 @@ $(document).ready(function() {
 	);
 	var passwordStrength = fieldValidator(
 			$('#password'),"Should have minimum length 4 and include symbols, special characters & numbers",function(input) {
-	    		score = 0 
+	    		score = 0
 	    		//password < 4
 	    		if (input.length < 4 ) { return false}
-	        
+
 	    		//password length
 	    		score += input.length * 4
 
 			    //password has 3 numbers
-			    if (input.match(/(.*[0-9].*[0-9].*[0-9])/))  score += 5 
-			    
+			    if (input.match(/(.*[0-9].*[0-9].*[0-9])/))  score += 5
+
 			    //password has 2 symbols
-			    if (input.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/)) score += 5 
-			    
+			    if (input.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/)) score += 5
+
 			    //password has Upper and Lower chars
-			    if (input.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  score += 10 
-			    
+			    if (input.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/))  score += 10
+
 			    //password has number and chars
-			    if (input.match(/([a-zA-Z])/) && input.match(/([0-9])/))  score += 15 
+			    if (input.match(/([a-zA-Z])/) && input.match(/([0-9])/))  score += 15
 			    //
 			    //password has number and symbol
-			    if (input.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && input.match(/([0-9])/))  score += 15 
-			    
+			    if (input.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && input.match(/([0-9])/))  score += 15
+
 			    //password has char and symbol
-			    if (input.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && input.match(/([a-zA-Z])/))  score += 15 
-			    
+			    if (input.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && input.match(/([a-zA-Z])/))  score += 15
+
 			    //password is just a numbers or chars
-			    if (input.match(/^\w+$/) || input.match(/^\d+$/) )  score -= 10 
-			    
+			    if (input.match(/^\w+$/) || input.match(/^\d+$/) )  score -= 10
+
 			    //verifing 0 < score < 100
-			    if ( score < 0 )  score = 0 
-			    if ( score > 100 )  score = 100 
-			    
+			    if ( score < 0 )  score = 0
+			    if ( score > 100 )  score = 100
+
 			    if (score < 50 )  return false
 			    return true
 			}

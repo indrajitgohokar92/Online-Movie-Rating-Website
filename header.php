@@ -12,14 +12,14 @@
  <div class="search">
   <form id="searchForm" action="searchMovie.php">
   	<input type="text" value="Search Movies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-    <select name="s" id="quicksearch" class="quicksearch_dropdown navbarSprite">
+    <select name="quicksearch" id="genre" class="quicksearch_dropdown navbarSprite">
        	<option value="all" selected="selected">All</option>
         <option value="action" >Action</option>
-        <option value="ep" >Adventure</option>
-        <option value="nm" >Comedy</option>
-        <option value="co" >Drama</option>
-        <option value="kw" >Romance</option>
-        <option value="ch" >Crime</option>
+        <option value="adventure" >Adventure</option>
+        <option value="comedy" >Comedy</option>
+        <option value="drama" >Drama</option>
+        <option value="romance" >Romance</option>
+        <option value="crime" >Crime</option>
     </select>
     <input type="submit" value="">
   </form>

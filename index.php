@@ -32,45 +32,45 @@ $(function () {
 			<?php include('header.php');?>
 		</div>
 		<div class="slider">
-		<div class="callbacks_container">
-		  <ul class="rslides" id="slider">
-		    <li><img src="images/banner.jpg" class="img-responsive" alt=""/>
-		    	<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
-			    </div>
-			</li>
-		    <li><img src="images/banner1.jpg" class="img-responsive" alt=""/>
-		    	<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
-			    </div>
-			</li>
-		    <li><img src="images/banner2.jpg" class="img-responsive" alt=""/>
-		    	<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
-			    </div>
-			</li>
-		  </ul>
-		</div>
-		<div class="banner_desc">
-			    	<div class="col-md-9">
-			    		<ul class="list_1">
-			    			<li>Published <span class="m_1">Feb 20, 2015</span></li>
-			    			<li>Updated <span class="m_1">Feb 20 2015</span></li>
-			    			<li>Rating <span class="m_1"><img src="images/rating.png" alt=""/></span></li>
-			    		</ul>
-			    	</div>
-			    	<div class="col-md-3 grid_1">
-			    		<ul class="list_1 list_2">
-			    			<li><i class="icon1"> </i><p>1,548</p></li>
-			    			<li><i class="icon2"> </i><p>215</p></li>
-			    			<li><i class="icon3"> </i><p>546</p></li>
-			    		</ul>
-			    	</div>
-			    </div>
+			<div class="callbacks_container">
+				  <ul class="rslides" id="slider">
+					    <li><img src="images/banner.jpg" class="img-responsive" alt=""/>
+					    	<div class="button">
+						      <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
+						    </div>
+							</li>
+					    <li><img src="images/banner1.jpg" class="img-responsive" alt=""/>
+					    	<div class="button">
+						      <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
+						    </div>
+							</li>
+					    <li><img src="images/banner2.jpg" class="img-responsive" alt=""/>
+					    	<div class="button">
+						      <a href="#" class="hvr-shutter-out-horizontal">Watch Now</a>
+						    </div>
+							</li>
+				  </ul>
+			</div>
+			<div class="banner_desc">
+		    	<div class="col-md-9">
+		    		<ul class="list_1">
+		    			<li>Published <span class="m_1">Feb 20, 2015</span></li>
+		    			<li>Updated <span class="m_1">Feb 20 2015</span></li>
+		    			<li>Rating: </li>
+		    		</ul>
+		    	</div>
+		    	<div class="col-md-3 grid_1">
+		    		<ul class="list_1 list_2">
+		    			<li><i class="icon1"> </i><p>1,548</p></li>
+		    			<li><i class="icon2"> </i><p>215</p></li>
+		    			<li><i class="icon3"> </i><p>546</p></li>
+		    		</ul>
+		    	</div>
+			</div>
 		</div>
 		<div class="content">
 			<div class="box_1">
-			 <h1 class="m_2">Featurd Movies</h1>
+			 <h1 class="m_2">Featured Movies</h1>
 		<div class="clearfix"> </div>
 		</div>
 		<div class="box_2">
@@ -104,7 +104,7 @@ $(function () {
 			    			<li><i class="icon1"> </i><p>1,548</p></li>
 			    			<li><i class="icon2"> </i><p>215</p></li>
 			    			<li><i class="icon3"> </i><p>546</p></li>
-			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""/></p></li>
+			    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 			    			<li>Release Date : &nbsp;<span class="m_4">Mar 15, 2015</span> </li>
 			    			<div class="clearfix"> </div>
 			    		</ul>
@@ -155,7 +155,7 @@ $(function () {
 			    			<li><i class="icon1"> </i><p>2,548</p></li>
 			    			<li><i class="icon2"> </i><p>215</p></li>
 			    			<li><i class="icon3"> </i><p>546</p></li>
-			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+			    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 			    			<div class="clearfix"> </div>
 			    		</ul>
 
@@ -180,7 +180,7 @@ $(function () {
 			    			<li><i class="icon1"> </i><p>2,548</p></li>
 			    			<li><i class="icon2"> </i><p>215</p></li>
 			    			<li><i class="icon3"> </i><p>546</p></li>
-			    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating2.png" alt=""></p></li>
+			    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 			    			<li>Release : &nbsp;<span class="m_4">Mar 15, 2015</span> </li>
 			    			<div class="clearfix"> </div>
 			    		</ul>

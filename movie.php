@@ -4,7 +4,7 @@
 <title>Best Movie rating</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 						    		</ul>
                                  </div>
@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 			    					</ul>
                                  </div>
@@ -77,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 			    					</ul>
                                  </div>
@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 			    					</ul>
                                  </div>
@@ -115,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 						    		</ul>
                                  </div>
@@ -134,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 						    		</ul>
                                  </div>
@@ -153,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 			    					</ul>
                                  </div>
@@ -172,13 +172,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <ul class="list_6">
 						    			<li><i class="icon1"> </i><p>2,548</p></li>
 						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
+						    			<li>Rating : &nbsp;&nbsp;<p></p></li>
 						    			<div class="clearfix"> </div>
 			    					</ul>
                                  </div>
                                  <div class="clearfix"> </div>
-                            </div>   
-                              <div class="clearfix"> </div>                         
+                            </div>
+                              <div class="clearfix"> </div>
                          <!-- Movie variant with time -->
                       </div>
                       <div class="col-md-3">
@@ -213,7 +213,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						    	<p class="m_3">Guardians of the Galaxy</p>
 							</div>
 						   </div>
-		               </div> 
+		               </div>
                       <div class="clearfix"> </div>
                   </div>
                   <h1 class="recent">Recently Viewed</h3>
@@ -230,25 +230,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							visibleItems: 4,
 							animationSpeed: 1000,
 							autoPlay: true,
-							autoPlaySpeed: 3000,    		
+							autoPlaySpeed: 3000,
 							pauseOnHover: true,
 							enableResponsiveBreakpoints: true,
-					    	responsiveBreakpoints: { 
-					    		portrait: { 
+					    	responsiveBreakpoints: {
+					    		portrait: {
 					    			changePoint:480,
 					    			visibleItems: 1
-					    		}, 
-					    		landscape: { 
+					    		},
+					    		landscape: {
 					    			changePoint:640,
 					    			visibleItems: 2
 					    		},
-					    		tablet: { 
+					    		tablet: {
 					    			changePoint:768,
 					    			visibleItems: 3
 					    		}
 					    	}
 					    });
-					    
+
 					});
 				   </script>
 				   <script type="text/javascript" src="js/jquery.flexisel.js"></script>
@@ -265,31 +265,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							visibleItems: 4,
 							animationSpeed: 1000,
 							autoPlay: true,
-							autoPlaySpeed: 3000,    		
+							autoPlaySpeed: 3000,
 							pauseOnHover: true,
 							enableResponsiveBreakpoints: true,
-					    	responsiveBreakpoints: { 
-					    		portrait: { 
+					    	responsiveBreakpoints: {
+					    		portrait: {
 					    			changePoint:480,
 					    			visibleItems: 1
-					    		}, 
-					    		landscape: { 
+					    		},
+					    		landscape: {
 					    			changePoint:640,
 					    			visibleItems: 2
 					    		},
-					    		tablet: { 
+					    		tablet: {
 					    			changePoint:768,
 					    			visibleItems: 3
 					    		}
 					    	}
 					    });
-					    
+
 					});
 				   </script>
 		  </div>
 </div>
 </div>
-<div class="container"> 
+<div class="container">
 <footer id="footer">
     <?php include('footer.php');?>
 </footer>
