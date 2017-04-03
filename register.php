@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/validate.js"></script>
-	<script type="text/javascript" src="js/register.js"></script>
+	<!-- <script type="text/javascript" src="js/register.js"></script> -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<script>
 		$(function () {
@@ -36,47 +36,45 @@
 		</div>
 	      <div class="content">
       	     <div class="register">
-		  	  <form>
-				<div class="register-top-grid">
-					<h3>Personal Information</h3>
-					 <div>
-						<span>First Name<label>*</label></span>
-						<input type="text" name="fname" id="fname">
-					 </div>
-					 <div>
-						<span>Last Name<label>*</label></span>
-						<input type="text" name="lname" id="lname">
-					 </div>
-					 <div>
-						 <span>Email Address<label>*</label></span>
-						 <input type="text" name="email" id="email">
-					 </div>
-					 <div>
-						<span>Date of Birth<label>*</label></span>
-        				<input id="dob" size="16" name="dob" type="text"/>
-      				</div>
-				</div>
-				<div class="clearfix"> </div>
-				<div class="register-bottom-grid">
-				    <h3>Login Information</h3>
-					 <div>
-						<span>Username<label>*</label></span>
-						<input type="text" name="username" id="username">
-					 </div>
-					 <div>
-						<span>Password<label>*</label></span>
-						<input type="password" name="password" id="password"/>
-					 </div>
-					 <div class="clearfix"> </div>
-				</div>
-			  </form>
-			  <div class="clearfix"> </div>
-			  <div class="register-but">
-				<form>
-					   <input type="button" value="submit" id="submitformbutton">
-					   <div class="clearfix"> </div>
-				</form>
-			  </div>
+		  	  	<form action="db/adduser.php" method="post">
+					<div class="register-top-grid">
+						<h3>Personal Information</h3>
+						 <div>
+							<span>First Name<label>*</label></span>
+							<input type="text" name="fname" id="fname">
+						 </div>
+						 <div>
+							<span>Last Name<label>*</label></span>
+							<input type="text" name="lname" id="lname">
+						 </div>
+						 <div>
+							 <span>Email Address<label>*</label></span>
+							 <input type="text" name="email" id="email">
+						 </div>
+						 <div>
+							<span>Date of Birth<label>*</label></span>
+	        				<input id="dob" size="16" name="dob" type="text"/>
+	      				</div>
+					</div>
+					<div class="clearfix"> </div>
+					<div class="register-bottom-grid">
+					    <h3>Login Information</h3>
+						 <div>
+							<span>Username<label>*</label></span>
+							<input type="text" name="username" id="username">
+						 </div>
+						 <div>
+							<span>Password<label>*</label></span>
+							<input type="password" name="password" id="password"/>
+						 </div>
+						 <div class="clearfix"> </div>
+					</div>
+			  		<div class="clearfix"> </div>
+					<div class="register-but">
+						<input type="submit" value="submit">
+						<div class="clearfix"> </div>
+					</div>
+		  		</form>
 		   </div>
         </div>
     </div>
