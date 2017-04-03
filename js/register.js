@@ -7,7 +7,6 @@ $(document).ready(function() {
 		var username = $('#username').val();
 		var password = $('#password').val();
 
-
 		if (window.XMLHttpRequest) {
 			xmlhttp = new XMLHttpRequest();
 		} else {
@@ -15,10 +14,10 @@ $(document).ready(function() {
 		}
 		xmlhttp.onreadystatechange = function() {
 	    	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				var res=xmlhttp.responseText.split("    ");
-	        	document.getElementById("info").innerHTML = res[0];
+				console.log(xmlhttp);
 	    }
 	}
+
 	xmlhttp.open("POST","../db/adduser.php?username="+username+"&password="+password,true);
 	xmlhttp.send();
 	});

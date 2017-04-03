@@ -41,19 +41,19 @@
 					<h3>Personal Information</h3>
 					 <div>
 						<span>First Name<label>*</label></span>
-						<input type="text" id="fname">
+						<input type="text" name="fname" id="fname">
 					 </div>
 					 <div>
 						<span>Last Name<label>*</label></span>
-						<input type="text" id="lname">
+						<input type="text" name="lname" id="lname">
 					 </div>
 					 <div>
 						 <span>Email Address<label>*</label></span>
-						 <input type="text" id="email">
+						 <input type="text" name="email" id="email">
 					 </div>
 					 <div>
 						<span>Date of Birth<label>*</label></span>
-        				<input id="dob" size="16" type="text"/>
+        				<input id="dob" size="16" name="dob" type="text"/>
       				</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -61,11 +61,11 @@
 				    <h3>Login Information</h3>
 					 <div>
 						<span>Username<label>*</label></span>
-						<input type="text" id="username">
+						<input type="text" name="username" id="username">
 					 </div>
 					 <div>
 						<span>Password<label>*</label></span>
-						<input type="password" id="password"/>
+						<input type="password" name="password" id="password"/>
 					 </div>
 					 <div class="clearfix"> </div>
 				</div>
