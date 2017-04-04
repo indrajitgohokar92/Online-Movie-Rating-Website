@@ -6,7 +6,6 @@
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 
-	// todo: not able to display output in console but go ahead and add values to db and see what comes there
 	$dbcon = new mysqli("localhost", "root", "root", "moviedb");
 
 	if(isset($firstname) && isset($lastname) && isset($dateofbirth) && isset($email) && isset($username) && isset($password)){
@@ -21,7 +20,10 @@
 			$user_id = $row['user_id'];
 		}
 
-		var_dump($user_id);
+		$dateofbirth = date('Y-m-d', strtotime($dateofbirth));
+
+		$insertDetails_query = "insert into user_details(user_id, fname, lname, email, dob) values ('".$user_id."', '".$firstname."', '".$lastname."', '".$email."','".$dateofbirth."')";
+		$resultDetails = mysqli_query($dbcon, $insertDetails_query) or die("Error inserting data". mysqli_error($dbcon));
 	}
 
 	// header("Location: http://localhost:8888/login.php"); /* Redirect to login.php */
