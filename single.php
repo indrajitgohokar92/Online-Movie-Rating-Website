@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="grid images_3_of_2">
                         	<div class="movie_image">
                                 <span class="movie_rating">5.0</span>
-                                <img src="images/single.jpg" class="img-responsive" alt=""/>
+                                <img src="images/Action/Guardians of the Galaxy.jpg" class="img-responsive" alt=""/>
                           </div>
                             <div class="movie_rate">
 															<form action="" class="sky-form">
@@ -124,34 +124,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <div class="col-md-3">
             <div class="movie_img">
 							<div class="grid_2">
-							<img src="images/pic6.jpg" class="img-responsive" alt="">
+							<img src="images/Action/Captain America - Civil War.jpg" class="img-responsive" alt="">
 							<div class="caption1">
-									<ul class="list_5 list_7">
-							    		<li><i class="icon5"> </i><p>3,548</p></li>
-							    	</ul>
 							    	<i class="icon4 icon6 icon7"> </i>
-							    	<p class="m_3">Guardians of the Galaxy</p>
+							    	<p class="m_3">Captain America - Civil War</p>
 							</div>
 						  </div>
 						</div>
             <div class="grid_2 col_1">
-							<img src="images/pic2.jpg" class="img-responsive" alt="">
+							<img src="images/Action/Captain America.jpg" class="img-responsive" alt="">
 							<div class="caption1">
-								<ul class="list_3 list_7">
+								<!-- <ul class="list_3 list_7">
 						    		<li><i class="icon5"> </i><p>3,548</p></li>
-						    	</ul>
+						    	</ul> -->
 						    	<i class="icon4 icon7"> </i>
-						    	<p class="m_3">Guardians of the Galaxy</p>
+						    	<p class="m_3">Captain America</p>
 							</div>
 						</div>
 						<div class="grid_2 col_1">
-							<img src="images/pic9.jpg" class="img-responsive" alt="">
+							<img src="images/Action/Hulk.jpg" class="img-responsive" alt="">
 							<div class="caption1">
-								<ul class="list_3 list_7">
+								<!-- <ul class="list_3 list_7">
 						    		<li><i class="icon5"> </i><p>3,548</p></li>
-						    	</ul>
+						    	</ul> -->
 						    	<i class="icon4 icon7"> </i>
-						    	<p class="m_3">Guardians of the Galaxy</p>
+						    	<p class="m_3">Hulk</p>
 							</div>
 						</div>
 		        </div>
