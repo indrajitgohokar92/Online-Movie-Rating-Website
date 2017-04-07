@@ -10,7 +10,7 @@
 	 <li><span class="simptip-position-bottom simptip-movable" data-tooltip="more"><a href="movie.php"> </a></span></li>
  </ul> -->
  <div class="search">
-  <form id="searchForm" action="searchMovie.php">
+  <form id="searchForm" method="post" action="searchMovie.php">
   	<input type="text" value="Search Movies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
     <select name="quicksearch" id="genre" class="quicksearch_dropdown navbarSprite">
        	<option value="all" selected="selected">All</option>
