@@ -57,7 +57,7 @@ border-top-right-radius: 3px;
 .pagination a.active {
 		background-color: #555555;
 		color: white;
-		border: 1px solid #4CAF50;
+		border: 1px solid #555555;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
