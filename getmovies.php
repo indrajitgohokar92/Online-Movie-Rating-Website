@@ -23,40 +23,49 @@ session_start();
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/validate.js"></script>
-	<script type="text/javascript" src="js/jquery.twbsPagination.js"></script>
+	<script type="text/javascript" src="js/jquery.bootpag.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<script>
-	    $(document).ready(function(){
+	<script typ>
+	$(document).ready(function(){
+		var myArray = JSON.parse(<?php echo json_encode($_SESSION['movie_array']); ?>);
+		$('#page-selection').bootpag({
+				total: myArray.length
 
-    	});
+		}).on("page", function(event, num){
+			var myArray = JSON.parse(<?php echo json_encode($_SESSION['movie_array']); ?>);
+			var html="<table>";
+			for (i in myArray)
+			{
+				var imgloc = JSON.parse(JSON.stringify(myArray[i].movie_location));
+				var loc="images/movie_posters/"+imgloc;
+				html += "<tr><td><a href='single.php'><img src="+loc+" height='375' width='220' /></a></td></tr>";
+			}
+			html += "</table>";
+			$("#content").html(html); // some ajax content loading...
+		});
+	});
 	</script>
 </head>
 <body>
-<div class="container">
-	<div class="container_wrap">
-		<div class="header_top">
-			<?php include('header.php');?>
+		<div class="container">
+				<div class="container_wrap">
+					<div class="header_top">
+						<?php include('header.php');?>
+					</div>
+					<div class="content">
+							<div id="page-content" class="well">
+							<div id="content" align="center">
+
+							</div>
+					    <div id="page-selection" align="center"></div>
+							</div>
+					</div>
+			  </div>
 		</div>
-		<div class="content">
-			<div id="page-content" class="well">
-				<div class="center">
-				  <div class="pagination">
-				    <a href="#">1</a>
-				    <a href="#" class="active">2</a>
-				    <a href="#">3</a>
-				    <a href="#">4</a>
-				    <a href="#">5</a>
-				    <a href="#">6</a>
-				  </div>
-				</div>
-			</div>
-	  </div>
-  </div>
-</div>
-<div class="container">
-<footer id="footer">
-    <?php include('footer.php');?>
-</footer>
-</div>
+		<div class="container">
+			<footer id="footer">
+			    <?php include('footer.php');?>
+			</footer>
+		</div>
 </body>
 </html>
