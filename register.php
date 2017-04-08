@@ -28,60 +28,60 @@
 	</script>
 </head>
 <body>
-<div class="container">
-	<div class="container_wrap">
-		<div class="header_top">
-			<?php include('header.php');?>
-		</div>
-	      <div class="content">
-      	     <div class="register">
-		  	  	<form action="db/adduser.php" method="post">
-					<div class="register-top-grid">
-						<h3>Personal Information</h3>
-						 <div>
-							<span>First Name<label>*</label></span>
-							<input type="text" name="fname" id="fname">
-						 </div>
-						 <div>
-							<span>Last Name<label>*</label></span>
-							<input type="text" name="lname" id="lname">
-						 </div>
-						 <div>
-							 <span>Email Address<label>*</label></span>
-							 <input type="text" name="email" id="email">
-						 </div>
-						 <div>
-							<span>Date of Birth<label>*</label></span>
-	        				<input id="dob" size="16" name="dob" type="text"/>
-	      				</div>
-					</div>
-					<div class="clearfix"> </div>
-					<div class="register-bottom-grid">
-					    <h3>Login Information</h3>
-						 <div>
-							<span>Username<label>*</label></span>
-							<input type="text" name="username" id="username">
-						 </div>
-						 <div>
-							<span>Password<label>*</label></span>
-							<input type="password" name="password" id="password"/>
-						 </div>
-						 <div class="clearfix"> </div>
-					</div>
-			  		<div class="clearfix"> </div>
-					<div class="register-but">
-						<input type="submit" value="submit">
+	<div class="container">
+		<div class="container_wrap">
+			<div class="header_top">
+				<?php include('header.php');?>
+			</div>
+		      <div class="content">
+	      	     <div class="register">
+			  	  	<form action="db/adduser.php" method="post">
+						<div class="register-top-grid">
+							<h3>Personal Information</h3>
+							 <div>
+								<span>First Name<label>*</label></span>
+								<input type="text" name="fname" id="fname">
+							 </div>
+							 <div>
+								<span>Last Name<label>*</label></span>
+								<input type="text" name="lname" id="lname">
+							 </div>
+							 <div>
+								 <span>Email Address<label>*</label></span>
+								 <input type="text" name="email" id="email">
+							 </div>
+							 <div>
+								<span>Date of Birth<label>*</label></span>
+		        				<input id="dob" size="16" name="dob" type="text"/>
+		      				</div>
+						</div>
 						<div class="clearfix"> </div>
-					</div>
-		  		</form>
-		   </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-<footer id="footer">
-    <?php include('footer.php');?>
-</footer>
-</div>
+						<div class="register-bottom-grid">
+						    <h3>Login Information</h3>
+							 <div>
+								<span>Username<label>*</label></span>
+								<input type="text" name="username" id="username">
+							 </div>
+							 <div>
+								<span>Password<label>*</label></span>
+								<input type="password" name="password" id="password"/>
+							 </div>
+							 <div class="clearfix"> </div>
+						</div>
+				  		<div class="clearfix"> </div>
+						<div class="register-but">
+							<input type="submit" value="submit">
+							<div class="clearfix"> </div>
+						</div>
+			  		</form>
+			   </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="container">
+		<footer id="footer">
+			<?php include('footer.php');?>
+		</footer>
+	</div>
 </body>
 </html>

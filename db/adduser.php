@@ -28,14 +28,19 @@
 		$hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);
 
 		$updatePwd_query = "update users set password = '".$hashedPassword."' where username = '".$username."' and user_id = '".$user_id."'";
-		echo $updatePwd_query;
+		// echo $updatePwd_query;
 		$resultPwd = mysqli_query($dbcon, $updatePwd_query) or die("Error updating DB".mysqli_error($dbcon)); // store the results of $query
 
 		$dateofbirth = date('Y-m-d', strtotime($dateofbirth));
 
 		$insertDetails_query = "insert into user_details(user_id, fname, lname, email, dob) values ('".$user_id."', '".$firstname."', '".$lastname."', '".$email."','".$dateofbirth."')";
 		$resultDetails = mysqli_query($dbcon, $insertDetails_query) or die("Error inserting data". mysqli_error($dbcon));
+
+		mysqli_close($dbcon);
 	}
-	// header("Location: http://localhost:8888/login.php"); /* Redirect to login.php */
-	// exit();
+
+	$port = $_SERVER['SERVER_PORT'];
+	$locationUrl = "http://localhost:".$port."/login.php";
+	header("Location:".$locationUrl); /* Redirect to login.php */
+	exit();
 ?>
