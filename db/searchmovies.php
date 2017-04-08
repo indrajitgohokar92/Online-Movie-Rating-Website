@@ -17,7 +17,7 @@ if(isset($search_term) && isset($movie_category)){
     $sql = "select movies.movie_id, movies.img_location from movies,categories,movies_categories where
             movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
             and movies.movie_title LIKE '%$search_term%';";
-	} else{
+	} else {
     $sql = "select movies.movie_id, movies.img_location from movies,categories,movies_categories where
             movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
             and categories.category_name='".$movie_category."' and movies.movie_title LIKE '%$search_term%';";

@@ -35,7 +35,7 @@
                 // if(isset($_SESSION["loggedIn"]) and $_SESSION["loggedIn"] == 1){
                 //     echo $_SESSION["firstname"];
                 // }
-                echo $_SESSION['firstname'];
+                echo $_SESSION['firstname']." ".$_SESSION['lastname'];
             ?>
         </p></li>
         <div class="clearfix"></div>
