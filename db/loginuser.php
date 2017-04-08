@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     $input_username = $_POST["input_username"];
     $input_password = $_POST["input_password"];
 
@@ -20,7 +20,6 @@
         $input_saltedPassword = $saltFromDB.$input_password;
 
         if (password_verify($input_saltedPassword, $passwordfromDB)) {
-            session_start();            // session_start should be at start of the page
 
             $selectUserid = "select fname, lname from user_details where user_id = '".$user_idfromDB."'";
     		$resultUserid = mysqli_query($dbcon, $selectUserid) or die("Error getting user id and salt from db". mysqli_error($dbcon));
@@ -30,19 +29,20 @@
                 $lnameFromDB = $row['lname'];
     		}
 
-            $_SESSION['loggedIn'] = True;	              // sign in the user upon successful authentication and store in session variable
-			      $_SESSION['username'] = $usernameFromDB;	    // store other neccessary data as session variable
+            $_SESSION['user_id'] = $user_idfromDB;
+            $_SESSION['username'] = $usernameFromDB;
             $_SESSION['firstname'] = $fnamefromDB;
             $_SESSION['lastname'] = $lnameFromDB;
+
             $port = $_SERVER['SERVER_PORT'];
           	$locationUrl = "http://localhost:".$port."/index.php";
-          	header("Location:".$locationUrl); /* Redirect to login.php */
+          	header("Location:".$locationUrl); /* Redirect to index.php */
         } else {
-          echo ('<script> alert("Incorrect password!") </script>');
-          $port = $_SERVER['SERVER_PORT'];
-        	$locationUrl = "http://localhost:".$port."/login.php";
-        	header("Location:".$locationUrl); /* Redirect to login.php */
-        	exit();
+            echo ('<script> alert("Incorrect password!") </script>');
+            $port = $_SERVER['SERVER_PORT'];
+            $locationUrl = "http://localhost:".$port."/login.php";
+            header("Location:".$locationUrl); /* Redirect to login.php */
+            exit();
         }
     }
 ?>
