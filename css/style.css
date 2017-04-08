@@ -19,6 +19,13 @@ body a{
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+.container .container_wrap .content #contentdiv .table{
+	border-collapse: collapse;
+}
+.container .container_wrap .content #contentdiv .table td{
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
 .container_wrap{
 	padding:5em 0;
 }

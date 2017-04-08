@@ -33,15 +33,15 @@ session_start();
 
 		}).on("page", function(event, num){
 			var myArray = JSON.parse(<?php echo json_encode($_SESSION['movie_array']); ?>);
-			var html="<table>";
+			var html="<table border-collapse: separate border-spacing: 0 1em>";
 			for (i in myArray)
 			{
 				var imgloc = JSON.parse(JSON.stringify(myArray[i].movie_location));
 				var loc="images/movie_posters/"+imgloc;
-				html += "<tr><td><a href='single.php'><img src="+loc+" height='375' width='220' /></a></td></tr>";
+				html += "<tr><td><a href='single.php'><img src="+loc+" height='390' width='220' /></a></td></tr>";
 			}
 			html += "</table>";
-			$("#content").html(html); // some ajax content loading...
+			$("#contentdiv").html(html); // some ajax content loading...
 		});
 	});
 	</script>
@@ -54,7 +54,7 @@ session_start();
 					</div>
 					<div class="content">
 							<div id="page-content" class="well">
-							<div id="content" align="center">
+							<div id="contentdiv" align="center">
 
 							</div>
 					    <div id="page-selection" align="center"></div>

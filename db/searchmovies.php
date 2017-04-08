@@ -36,7 +36,6 @@ if(isset($search_term) && isset($movie_category)){
     $_SESSION['movie_array'] = json_encode($rows);
     $port = $_SERVER['SERVER_PORT'];
     $locationUrl = "http://localhost:".$port."/getmovies.php";
-    echo $locationUrl;
     header("Location:".$locationUrl);
     exit();
   } else {
