@@ -32,14 +32,15 @@ if(isset($search_term) && isset($movie_category)){
           $location = $row['img_location'];
           $rows[] = array("movie_title" => $movietitle, "movie_location" => $location,);
         }
-    echo json_encode($rows)."<br>";
+    session_start();
+    $_SESSION['movie_array'] = json_encode($rows);
+    $port = $_SERVER['SERVER_PORT'];
+    $locationUrl = "http://localhost:".$port."/getmovies.php";
+    echo $locationUrl;
+    header("Location:".$locationUrl);
+    exit();
   } else {
     echo "failure in getting result";
   }
 }
-$port = $_SERVER['SERVER_PORT'];
-$locationUrl = "http://localhost:".$port."/getmovies.php";
-echo $locationUrl;
-// header("Location: /getmovies.php");
-exit();
 ?>

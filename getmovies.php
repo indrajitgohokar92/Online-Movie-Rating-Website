@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+session_start();
+?>
 <html>
 <head>
 	<title>Best Movie rating</title>
@@ -22,25 +25,9 @@
 	<script type="text/javascript" src="js/validate.js"></script>
 	<script type="text/javascript" src="js/jquery.twbsPagination.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<?php
-	$var_value = $_REQUEST['varname'];
-
-	 ?>
 	<script>
-	    $(function () {
-	        window.pagObj = $('#pagination').twbsPagination({
-	            totalPages: 20,
-	            visiblePages: 10,
-	            onPageClick: function (event, page) {
-	                console.info(page + ' (from options)');
-	               	var html= "<p>"+page+"</p>";
-					$( "#page-content" ).html(html);
-	            }
-	        }).on('page', function (event, page) {
-	            console.info(page + ' (from event listening)');
-	            var html= "<p>"+page+"</p>";
-				$( "#page-content" ).html(html);
-	        });
+	    $(document).ready(function(){
+
     	});
 	</script>
 </head>
@@ -51,12 +38,20 @@
 			<?php include('header.php');?>
 		</div>
 		<div class="content">
-			<div id="page-content" class="well"></div>
-			<nav aria-label="Page navigation">
-	        	<ul class="pagination" id="pagination"></ul>
-	    	</nav>
-	    </div>
-    </div>
+			<div id="page-content" class="well">
+				<div class="center">
+				  <div class="pagination">
+				    <a href="#">1</a>
+				    <a href="#" class="active">2</a>
+				    <a href="#">3</a>
+				    <a href="#">4</a>
+				    <a href="#">5</a>
+				    <a href="#">6</a>
+				  </div>
+				</div>
+			</div>
+	  </div>
+  </div>
 </div>
 <div class="container">
 <footer id="footer">
