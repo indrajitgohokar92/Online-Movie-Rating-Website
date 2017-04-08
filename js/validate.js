@@ -93,29 +93,41 @@ $(document).ready(function() {
 	$('#email').blur(emailValidator);
 	$('#username').blur(userValidator);
 	$('#password').blur(passwordStrength);
+	$('#dob').datepicker();
+	$("form").submit(function(){
+		alert($("fnamestatus").val());
+		if ($("fnamestatus").val() == "Success!" ) {
+			alert("Success!");
+			return;
+		}else{
+			alert("Failure!");
+			event.preventDefault();
+		}
+	});
+	var validateField = function(fieldValue, infoMessage, validateFunction) {
+		if (fieldValue.is(':last-child')) {
+				var str=fieldValue.prop('outerHTML');
+			 	var id1=str.substring(str.lastIndexOf("=")+2,str.lastIndexOf(">")-1)+"status";
+				var $i = $("<i>", {id: id1});
+				fieldValue.parent().append($i);
+		}
 
+		var formStatus = fieldValue.next();
+		var inputValue = fieldValue.val();
+		formStatus.removeClass();
+
+		if (fieldValue.is(':focus')) {
+			formStatus.text(infoMessage);
+			formStatus.addClass("info");
+			return;
+		}
+
+		if (!inputValue) {
+			formStatus.text("");
+		} else if (validateFunction(fieldValue.val())) {
+			formStatus.text("Success!");
+		} else {
+			formStatus.text("Error!");
+		}
+	};
 });
-
-var validateField = function(fieldValue, infoMessage, validateFunction) {
-	if (fieldValue.is(':last-child')) {
-		fieldValue.parent().append("<i></i>");
-	}
-
-	var formStatus = fieldValue.next();
-	var inputValue = fieldValue.val();
-	formStatus.removeClass();
-
-	if (fieldValue.is(':focus')) {
-		formStatus.text(infoMessage);
-		formStatus.addClass("info");
-		return;
-	}
-
-	if (!inputValue) {
-		formStatus.text("");
-	} else if (validateFunction(fieldValue.val())) {
-		formStatus.text("Success!");
-	} else {
-		formStatus.text("Error!");
-	}
-};
