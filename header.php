@@ -13,7 +13,7 @@
     </ul> -->
     <div class="search">
         <form id="searchForm" method="post" action="db/searchmovies.php">
-            <input type="text" name="searchterm" value="SearchMovies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+            <input type="text" name="searchterm" value="Search Movies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
             <select name="moviegenre" id="genre" class="quicksearch_dropdown navbarSprite">
             	<option value="all" selected="selected">All</option>
                 <option value="action">Action</option>
