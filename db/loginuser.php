@@ -31,14 +31,15 @@
     		}
 
             $_SESSION['loggedIn'] = True;	              // sign in the user upon successful authentication and store in session variable
-			$_SESSION['username'] = $usernameFromDB;	    // store other neccessary data as session variable
+			      $_SESSION['username'] = $usernameFromDB;	    // store other neccessary data as session variable
             $_SESSION['firstname'] = $fnamefromDB;
             $_SESSION['lastname'] = $lnameFromDB;
-
-            header("Location: http://localhost:8888/index.php");
-        } else {
-            echo ('<script> alert("Incorrect password!") </script>');
             $port = $_SERVER['SERVER_PORT'];
+          	$locationUrl = "http://localhost:".$port."/index.php";
+          	header("Location:".$locationUrl); /* Redirect to login.php */
+        } else {
+          echo ('<script> alert("Incorrect password!") </script>');
+          $port = $_SERVER['SERVER_PORT'];
         	$locationUrl = "http://localhost:".$port."/login.php";
         	header("Location:".$locationUrl); /* Redirect to login.php */
         	exit();

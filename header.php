@@ -29,7 +29,7 @@
 <div class="col-sm-3 header_right">
    <ul class="header_right_box">
 	 <li><img src="images/navLogin1.png" alt=""/></li>
-	 <li class="last"><p><a href="login.php">Login<?php session_start(); echo $_SESSION['firstname']." ".$_SESSION['lastname']; ?></a></p></li>
+	 <li class="last"><p><a href="login.php">Login</a> <?php session_start(); echo $_SESSION['firstname']; ?></p></li>
 	 <!-- <li class="last"><i class="edit"> </i></li> -->
 	 <div class="clearfix"> </div>
    </ul>
