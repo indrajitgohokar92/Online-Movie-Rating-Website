@@ -6,12 +6,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Movie_store" />
 	<script type="application/x-javascript">
-		 addEventListener("load", function() { 
-		 	setTimeout(hideURLbar, 0); 
-		 }, false); 
-		 function hideURLbar(){ 
-		 	window.scrollTo(0,1); 
-		 } 
+		 addEventListener("load", function() {
+		 	setTimeout(hideURLbar, 0);
+		 }, false);
+		 function hideURLbar(){
+		 	window.scrollTo(0,1);
+		 }
 	</script>
 	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -22,6 +22,10 @@
 	<script type="text/javascript" src="js/validate.js"></script>
 	<script type="text/javascript" src="js/jquery.twbsPagination.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<?php
+	$var_value = $_REQUEST['varname'];
+
+	 ?>
 	<script>
 	    $(function () {
 	        window.pagObj = $('#pagination').twbsPagination({
@@ -51,13 +55,13 @@
 			<nav aria-label="Page navigation">
 	        	<ul class="pagination" id="pagination"></ul>
 	    	</nav>
-	    </div>	
+	    </div>
     </div>
 </div>
-<div class="container"> 
+<div class="container">
 <footer id="footer">
     <?php include('footer.php');?>
 </footer>
-</div>		
+</div>
 </body>
 </html>
