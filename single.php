@@ -141,7 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </p>
 		                <form method="post" action="contact-post.html">
         							<div class="to">
-        		            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+        		            <input type="text" class="text" value="<?php if(isset($_SESSION["firstname"])){echo $_SESSION['firstname'];} else{echo 'Name';} ?>" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
         							 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
         							</div>
         							<div class="text">
