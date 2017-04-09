@@ -37,8 +37,10 @@ session_start();
 			for (i in myArray)
 			{
 				var imgloc = JSON.parse(JSON.stringify(myArray[i].movie_location));
+				var id= JSON.parse(JSON.stringify(myArray[i].movie_id));
 				var loc="images/movie_posters/"+imgloc;
-				html += "<tr><td><a href='single.php'><img src="+loc+" height='390' width='220' /></a></td></tr>";
+				var link="single.php?id="+id;
+				html += "<tr><td><a href="+link+"><img src="+loc+" height='390' width='220' /></a></td></tr>";
 			}
 			html += "</table>";
 			$("#contentdiv").html(html); // some ajax content loading...

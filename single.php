@@ -1,4 +1,33 @@
 <!DOCTYPE HTML>
+<?php
+//Step1
+ $dbcon = new mysqli("localhost", "root", "root", "moviedb");
+ $mov_id = $_GET['id'];
+ $queryheading = "select avg_audience_rating,img_location from movies where
+						movie_id='".$mov_id."';";
+ $querymovie = "select movie_title,release_date,year_of_release,avg_critics_rating,
+            country,age_restriction from movies where movie_id='".$mov_id."';";
+ $querysynopsis = "select synopsis from movies where movie_id='".$mov_id."';";
+ $queryactors = "select actor_name from actors,movies_actors where
+                movies_actors.actor_id = actors.actor_id and
+                movies_actors.movie_id='".$mov_id."';";
+ $queryproducers = "select producer_name from producers,movies_producers where
+            movies_producers.producer_id = producers.producer_id and
+            movies_producers.movie_id='".$mov_id."';";
+ $querydirectors = "select director_name from directors,movies_directors where
+						movies_directors.director_id= directors.director_id and
+            movies_directors.movie_id='".$mov_id."';";
+ $querycategory = "select category_name from categories,movies_categories where
+						movies_categories.category_id = categories.category_id and
+            movies_categories.movie_id='".$mov_id."';";
+$resultheading = mysqli_query($dbcon,$queryheading);
+$resultmovie = mysqli_query($dbcon,$querymovie);
+$resultactors = mysqli_query($dbcon,$queryactors);
+$resultproducers = mysqli_query($dbcon,$queryproducers);
+$resultdirectors = mysqli_query($dbcon,$querydirectors);
+$resultcategory = mysqli_query($dbcon,$querycategory);
+$resultsynopsis = mysqli_query($dbcon,$querysynopsis);
+?>
 <html>
 <head>
 <title>Best Movie rating</title>
@@ -24,8 +53,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       	         <div class="col-md-9 movie_box">
                         <div class="grid images_3_of_2">
                         	<div class="movie_image">
-                                <span class="movie_rating">5.0</span>
-                                <img src="images/Action/Guardians of the Galaxy.jpg" class="img-responsive" alt=""/>
+														<?php
+														while($row1 = mysqli_fetch_array($resultheading))
+														{
+															echo "<span class='movie_rating'>".$row1['avg_audience_rating']."</span>";
+															echo "<img src='images/movie_posters/".$row1['img_location']."'class='img-responsive' alt=''/>";
+														}
+														?>
                           </div>
                             <div class="movie_rate">
 															<form action="" class="sky-form">
@@ -37,35 +71,86 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															        <option value="3" >3</option>
 															        <option value="4" >4</option>
 															        <option value="5" >5</option>
+                                      <option value="6" >6</option>
+															        <option value="7" >7</option>
+															        <option value="8" >8</option>
+															        <option value="9" >9</option>
+															        <option value="10" >10</option>
 															    </select>
 														  	</form>
 																<div class="clearfix"> </div>
                           </div>
                         </div>
-                        <div class="desc1 span_3_of_2">
-                        	<p class="movie_option"><strong>Country: </strong><a href="#">established</a>, <a href="#">USA</a></p>
-                        	<p class="movie_option"><strong>Year: </strong>2014</p>
-                        	<p class="movie_option"><strong>Category: </strong><a href="#">Adventure</a>, <a href="#">Fantazy</a></p>
-                        	<p class="movie_option"><strong>Release date: </strong>December 12, 2014</p>
-                        	<p class="movie_option"><strong>Director: </strong><a href="#">suffered </a></p>
-                        	<p class="movie_option"><strong>Actors: </strong><a href="#">anything</a>, <a href="#">Lorem Ipsum</a>, <a href="#" discovered</a>, <a href="#"> Virginia</a>, <a href="#"> Virginia</a>, <a href="#">variations</a>, <a href="#">variations</a>, <a href="#">variations</a>, <a href="#"> Virginia</a> <a href="#">...</a></p>
-                            <p class="movie_option"><strong>Age restriction: </strong>13</p>
-                            <div class="down_btn"><a class="btn1" href="#"><span> </span>Download</a></div>
+
+												<div class="desc1 span_3_of_2">
+													<?php
+                          while($row2 = mysqli_fetch_array($resultmovie))
+                          {
+                            echo "<p class='movie_option'><strong>Title: </strong>".$row2['movie_title']."</p>";
+                            echo "<p class='movie_option'><strong>Country: </strong>".$row2['country']."</p>";
+                            echo "<p class='movie_option'><strong>Release Date: </strong>".$row2['release_date']."</p>";
+                            echo "<p class='movie_option'><strong>Year of Release: </strong>".$row2['year_of_release']."</p>";
+                            echo "<p class='movie_option'><strong>Average Critics Rating: </strong>".$row2['avg_critics_rating']."</p>";
+                            echo "<p class='movie_option'><strong>Age Restriction: </strong>".$row2['age_restriction']."</p>";
+                          }
+                          ?>
+                          <p class="movie_option"><strong>Actors: </strong>
+                            <?php
+                            $actors = array();
+                            while ($row3 = mysqli_fetch_array($resultactors)) {
+                                $actors[] = $row3['actor_name'];
+                            }
+                            echo "".implode(',', $actors)."";
+                            ?>
+                        	</p>
+                          <p class="movie_option"><strong>Directors: </strong>
+                            <?php
+                            $directors = array();
+                            while ($row3 = mysqli_fetch_array($resultdirectors)) {
+                                $directors[] = $row3['director_name'];
+                            }
+                            echo "".implode(',', $directors)."";
+                            ?>
+                          </p>
+                          <p class="movie_option"><strong>Producers: </strong>
+                            <?php
+                            $producers = array();
+                            while ($row3 = mysqli_fetch_array($resultproducers)) {
+                                $producers[] = $row3['producer_name'];
+                            }
+                            echo "".implode(',', $producers)."";
+                            ?>
+                          <p class="movie_option"><strong>Categories: </strong>
+                            <?php
+                            $categories = array();
+                            while ($row3 = mysqli_fetch_array($resultcategory)) {
+                                $categories[] = ucfirst($row3['category_name']);
+                            }
+                            echo "".implode(',', $categories)."";
+                            ?>
+                          </p>
                          </div>
                         <div class="clearfix"> </div>
-                        <p class="m_4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+                        <p class="m_4"><strong>Synopsis: </strong>
+                        <?php
+                        while($row7 = mysqli_fetch_array($resultsynopsis))
+                        {
+                          echo "".$row7['synopsis']."";
+                        }
+                        ?>
+                        </p>
 		                <form method="post" action="contact-post.html">
-							<div class="to">
-		            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-							 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
-							</div>
-							<div class="text">
-			          <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
-			        </div>
-			        <div class="form-submit1">
-					      <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
-					    </div>
-							<div class="clearfix"></div>
+        							<div class="to">
+        		            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+        							 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
+        							</div>
+        							<div class="text">
+        			          <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
+        			        </div>
+        			        <div class="form-submit1">
+        					      <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
+        					    </div>
+        							<div class="clearfix"></div>
                  	</form>
 		              <div class="single">
 		                <h1>10 Comments</h1>
@@ -122,33 +207,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
           </div>
           <div class="col-md-3">
+            <p><strong>Featured Movies</strong></p><br />
             <div class="movie_img">
 							<div class="grid_2">
-							<img src="images/Action/Captain America - Civil War.jpg" class="img-responsive" alt="">
+							<a href="single.php?id=2"><img src="images/movie_posters/2.jpg" class="img-responsive" alt=""></a>
 							<div class="caption1">
 							    	<i class="icon4 icon6 icon7"> </i>
-							    	<p class="m_3">Captain America - Civil War</p>
 							</div>
 						  </div>
 						</div>
             <div class="grid_2 col_1">
-							<img src="images/Action/Captain America.jpg" class="img-responsive" alt="">
+							<a href="single.php?id=3"><img src="images/movie_posters/3.jpg" class="img-responsive" alt=""></a>
 							<div class="caption1">
-								<!-- <ul class="list_3 list_7">
-						    		<li><i class="icon5"> </i><p>3,548</p></li>
-						    	</ul> -->
 						    	<i class="icon4 icon7"> </i>
-						    	<p class="m_3">Captain America</p>
 							</div>
 						</div>
 						<div class="grid_2 col_1">
-							<img src="images/Action/Hulk.jpg" class="img-responsive" alt="">
+							<a href="single.php?id=1"><img src="images/movie_posters/1.jpg" class="img-responsive" alt=""></a>
 							<div class="caption1">
-								<!-- <ul class="list_3 list_7">
-						    		<li><i class="icon5"> </i><p>3,548</p></li>
-						    	</ul> -->
 						    	<i class="icon4 icon7"> </i>
-						    	<p class="m_3">Hulk</p>
 							</div>
 						</div>
 		        </div>

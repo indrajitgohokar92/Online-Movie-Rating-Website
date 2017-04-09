@@ -27,9 +27,9 @@ if(isset($search_term) && isset($movie_category)){
   if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result))
     {
-      $movietitle = $row['movie_id'];
+      $movieid = $row['movie_id'];
       $location = $row['img_location'];
-      $rows[] = array("movie_title" => $movietitle, "movie_location" => $location,);
+      $rows[] = array("movie_id" => $movieid, "movie_location" => $location,);
     }
     session_start();
     $_SESSION['movie_array'] = json_encode($rows);
