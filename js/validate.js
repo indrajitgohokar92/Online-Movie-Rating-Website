@@ -6,43 +6,86 @@ $(document).ready(function() {
 	}
 
 	var firstValidator = fieldValidator(
-			$('#fname'),"The First name must contain only alphabetical characters",function(input) {
+			$('#fname'),"The First name must contain only alphabetical characters and must not be empty",function(input) {
+				if (input.length < 2) { return false}
 				check_fname = /^[A-Za-z]+$/;
 				return check_fname.test(input);
 			}
 	);
 
 	var lastValidator = fieldValidator(
-			$('#lname'),"The Last name must contain only alphabetical characters",function(input) {
+			$('#lname'),"The Last name must contain only alphabetical characters and must not be empty",function(input) {
+				if (input.length < 2) { return false}
 				check_lname = /^[A-Za-z]+$/;
 				return check_lname.test(input);
 			}
 	);
 
 	var emailValidator = fieldValidator(
-			$('#email'),"The email should be a valid email address",
+			$('#email'),"Should be unique, valid email address and must not be empty",
 			function(input) {
-				check_email = /^(.+)@(.+)+$/;
-				return check_email.test(input);
+				var status="false";
+				input_email = $('#email').val();
+				$.ajax({
+					 'async': false,
+						url: '../db/checkemail.php',
+						type: 'POST',
+						data: {input_email: input_email},
+						success: function(response) {
+							console.log("success");
+							console.log(response);
+							if(response.indexOf("not registered") > -1){
+							 	check_email = /^(.+)@(.+)+$/;
+								if(check_email.test(input_email) && input_email.length > 2){
+									status="true";
+								}
+							}
+			 			},
+			 			error: function() { console.log("error"); }
+				});
+				if(status=="true"){return true;}
+				else{return false;}
 			}
 	);
 
 	var dobValidator = fieldValidator(
 			$('#dob'),"Enter the Date of Birth",
 			function(input) {
-				return input.length > 1;
+				if (input.length < 2) {
+			    return false;
+			  }
+			  return true;
 			}
 	);
 
 	var userValidator = fieldValidator(
-			$('#username'),"The username must contain " +
-			"only alphabetical or numeric characters.",function(input) {
-				check_username = /^[0-9A-Za-z]+$/;
-				return check_username.test(input);
+			$('#username'),"Username must be unique, contain " +
+			"only alphanumeric characters and must not be empty",function(input) {
+			  var status="false";
+				input_username = $('#username').val();
+				$.ajax({
+						'async': false,
+						url: '../db/checkusername.php',
+						type: 'POST',
+						data: {input_username: input_username},
+						success: function(response) {
+							console.log("success");
+							console.log(response);
+							if(response.indexOf("not registered") > -1){
+							 	check_username = /^[0-9A-Za-z]+$/;
+								if(check_username.test(input_username) && input_username.length > 2){
+									status="true";
+								}
+							}
+			 			},
+			 			error: function() { console.log("error"); }
+				});
+				if(status=="true"){return true;}
+				else{return false;}
 			}
 	);
 	var passwordStrength = fieldValidator(
-			$('#password'),"Should have minimum length 4 and include symbols, special characters & numbers",function(input) {
+			$('#password'),"Should have minimum length 4 and include symbols, special characters",function(input) {
 	    		score = 0
 	    		//password < 4
 	    		if (input.length < 4 ) { return false}
@@ -95,39 +138,50 @@ $(document).ready(function() {
 	$('#password').blur(passwordStrength);
 	$('#dob').datepicker();
 	$("form").submit(function(){
-		alert($("fnamestatus").val());
-		if ($("fnamestatus").val() == "Success!" ) {
-			alert("Success!");
-			return;
+		if($('#fname').val()=="" && $('#lname').val()=="" && $('#email').val()==""
+			&& $('#dob').val()=="" && $('#username').val()=="" && $('#password').val()==""){
+				return false;
+		}
+		var fname=$('#fnamestatus').prop('outerHTML');
+		var lname=$('#lnamestatus').prop('outerHTML');
+		var email=$('#emailstatus').prop('outerHTML');
+		var username=$('#usernamestatus').prop('outerHTML');
+		var password=$('#passwordstatus').prop('outerHTML');
+		if ((fname.indexOf("Success!") >= 0) &&
+				(lname.indexOf("Success!") >= 0) &&
+				(email.indexOf("Success!") >= 0) &&
+				(username.indexOf("Success!") >= 0) &&
+				(password.indexOf("Success!") >= 0)
+		){
+			return true;
 		}else{
-			alert("Failure!");
-			event.preventDefault();
+			return false;
 		}
 	});
-	var validateField = function(fieldValue, infoMessage, validateFunction) {
-		if (fieldValue.is(':last-child')) {
-				var str=fieldValue.prop('outerHTML');
-			 	var id1=str.substring(str.lastIndexOf("=")+2,str.lastIndexOf(">")-1)+"status";
-				var $i = $("<i>", {id: id1});
-				fieldValue.parent().append($i);
-		}
-
-		var formStatus = fieldValue.next();
-		var inputValue = fieldValue.val();
-		formStatus.removeClass();
-
-		if (fieldValue.is(':focus')) {
-			formStatus.text(infoMessage);
-			formStatus.addClass("info");
-			return;
-		}
-
-		if (!inputValue) {
-			formStatus.text("");
-		} else if (validateFunction(fieldValue.val())) {
-			formStatus.text("Success!");
-		} else {
-			formStatus.text("Error!");
-		}
-	};
 });
+var validateField = function(fieldValue, infoMessage, validateFunction) {
+	if (fieldValue.is(':last-child')) {
+			var str=fieldValue.prop('outerHTML');
+			var id1=str.substring(str.lastIndexOf("=")+2,str.lastIndexOf(">")-1)+"status";
+			var $i = $("<i>", {id: id1});
+			fieldValue.parent().append($i);
+	}
+
+	var formStatus = fieldValue.next();
+	var inputValue = fieldValue.val();
+	formStatus.removeClass();
+
+	if (fieldValue.is(':focus')) {
+		formStatus.text(infoMessage);
+		formStatus.addClass("info");
+		return;
+	}
+
+	if (!inputValue) {
+		formStatus.text("");
+	} else if (validateFunction(fieldValue.val())) {
+		formStatus.text("Success!");
+	} else {
+		formStatus.text("Error!");
+	}
+};
