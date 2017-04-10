@@ -11,7 +11,7 @@
 
         $user_idfromDB = $user_idfromDB = $saltFromDB = "";
 		while($row = mysqli_fetch_assoc($resultUseridNsalt)){
-			$user_idfromDB = $row['user_id'];
+			      $user_idfromDB = $row['user_id'];
             $usernameFromDB = $row['username'];
             $saltFromDB = $row['salt'];
             $passwordfromDB = $row['password'];

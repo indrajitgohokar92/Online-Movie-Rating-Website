@@ -7,17 +7,25 @@ $(document).ready(function() {
 
 	var firstValidator = fieldValidator(
 			$('#fname'),"The First name must contain only alphabetical characters and must not be empty",function(input) {
-				if (input.length < 2) { return false}
+				if (input.length < 2) { return "First name is less than 2 characters!"}
 				check_fname = /^[A-Za-z]+$/;
-				return check_fname.test(input);
+				if(check_fname.test(input)){
+					return "Success"
+				}else{
+						return "Should contain alphabetical characters only!"
+				}
 			}
 	);
 
 	var lastValidator = fieldValidator(
 			$('#lname'),"The Last name must contain only alphabetical characters and must not be empty",function(input) {
-				if (input.length < 2) { return false}
+				if (input.length < 2) { return "Last name is less than 2 characters!"}
 				check_lname = /^[A-Za-z]+$/;
-				return check_lname.test(input);
+				if(check_lname.test(input)){
+					return "Success"
+				}else{
+						return "Should contain alphabetical characters only!"
+				}
 			}
 	);
 
@@ -37,14 +45,17 @@ $(document).ready(function() {
 							if(response.indexOf("not registered") > -1){
 							 	check_email = /^(.+)@(.+)+$/;
 								if(check_email.test(input_email) && input_email.length > 2){
-									status="true";
+									status="Success";
+								}else{
+									status="Incorrect email format!";
 								}
+							}else{
+								status="Already Registered!";
 							}
 			 			},
 			 			error: function() { console.log("error"); }
 				});
-				if(status=="true"){return true;}
-				else{return false;}
+				return status
 			}
 	);
 
@@ -52,9 +63,9 @@ $(document).ready(function() {
 			$('#dob'),"Enter the Date of Birth",
 			function(input) {
 				if (input.length < 2) {
-			    return false;
+			    return "Incorrect DOB!"
 			  }
-			  return true;
+			  return "Success"
 			}
 	);
 
@@ -74,21 +85,24 @@ $(document).ready(function() {
 							if(response.indexOf("not registered") > -1){
 							 	check_username = /^[0-9A-Za-z]+$/;
 								if(check_username.test(input_username) && input_username.length > 2){
-									status="true";
+									status="Success";
+								}else{
+									status="Should contain alphanumeric characters only!";
 								}
+							}else{
+								status="Already Registered!";
 							}
 			 			},
 			 			error: function() { console.log("error"); }
 				});
-				if(status=="true"){return true;}
-				else{return false;}
+				return status
 			}
 	);
 	var passwordStrength = fieldValidator(
 			$('#password'),"Should have minimum length 4 and include symbols, special characters",function(input) {
 	    		score = 0
 	    		//password < 4
-	    		if (input.length < 4 ) { return false}
+	    		if (input.length < 4 ) { return "Password length less than 4 characters!"}
 
 	    		//password length
 	    		score += input.length * 4
@@ -118,8 +132,8 @@ $(document).ready(function() {
 			    if ( score < 0 )  score = 0
 			    if ( score > 100 )  score = 100
 
-			    if (score < 50 )  return false
-			    return true
+			    if (score < 50 )  return "Weak password!"
+			    return "Success"
 			}
 	);
 
@@ -176,12 +190,13 @@ var validateField = function(fieldValue, infoMessage, validateFunction) {
 		formStatus.addClass("info");
 		return;
 	}
-
+	var status=validateFunction(fieldValue.val());
 	if (!inputValue) {
 		formStatus.text("");
-	} else if (validateFunction(fieldValue.val())) {
+	}
+	else if (status=="Success") {
 		formStatus.text("Success!");
 	} else {
-		formStatus.text("Error!");
+		formStatus.text("Error: "+status);
 	}
 };
