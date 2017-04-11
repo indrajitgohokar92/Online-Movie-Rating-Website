@@ -152,8 +152,10 @@ $(document).ready(function() {
 	$('#password').blur(passwordStrength);
 	$('#dob').datepicker();
 	$("form").submit(function(){
-		if($('#fname').val()=="" && $('#lname').val()=="" && $('#email').val()==""
-			&& $('#dob').val()=="" && $('#username').val()=="" && $('#password').val()==""){
+
+		if($('#fname').val()=="" || $('#lname').val()=="" || $('#email').val()==""
+			&& $('#dob').val()=="" || $('#username').val()=="" || $('#password').val()==""){
+				$("#formstatus").text("Enter All the Fields!").show().fadeOut( 3000 );
 				return false;
 		}
 		var fname=$('#fnamestatus').prop('outerHTML');
@@ -161,15 +163,16 @@ $(document).ready(function() {
 		var email=$('#emailstatus').prop('outerHTML');
 		var username=$('#usernamestatus').prop('outerHTML');
 		var password=$('#passwordstatus').prop('outerHTML');
-		if ((fname.indexOf("Success!") >= 0) &&
-				(lname.indexOf("Success!") >= 0) &&
-				(email.indexOf("Success!") >= 0) &&
-				(username.indexOf("Success!") >= 0) &&
-				(password.indexOf("Success!") >= 0)
+		if ((fname.indexOf("Success!") < 0) ||
+				(lname.indexOf("Success!") < 0) ||
+				(email.indexOf("Success!") < 0) ||
+				(username.indexOf("Success!") < 0) ||
+				(password.indexOf("Success!") < 0)
 		){
-			return true;
-		}else{
+			$("#formstatus").text("Errors in the fields!").show().fadeOut( 3000 );
 			return false;
+		}else{
+			return true;
 		}
 	});
 });

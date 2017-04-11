@@ -39,6 +39,7 @@
           	header("Location:".$locationUrl); /* Redirect to index.php */
         } else {
             echo ('<script> alert("Incorrect password!") </script>');
+            $_SESSION['LoginError'] = 'Incorrect Username/Password!';
             $port = $_SERVER['SERVER_PORT'];
             $locationUrl = "http://localhost:".$port."/login.php";
             header("Location:".$locationUrl); /* Redirect to login.php */

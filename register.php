@@ -64,11 +64,10 @@
 										 </div>
 										 <div class="clearfix"> </div>
 									</div>
-								  	 <div class="clearfix"> </div>
-									<div class="register-but">
-											<input type="submit" value="submit">
-											<div class="clearfix"> </div>
-									</div>
+								  <div class="clearfix"> </div>
+									<input class="acount-btn" type="submit" value="Submit">
+									<i id="formstatus"></i>
+									<div class="clearfix"> </div>
 			  		</form>
 			   </div>
 	      </div>
