@@ -30,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-6 login-right">
 						<h3>Registered Customers</h3>
 						<p>If you have an account with us, please log in.</p>
-						<form action="db/loginuser.php" method="post">
+						<form action="db/loginuser.php" method="post"  id="loginform">
 							<div>
 								<span>Username<label>*</label></span>
 								<input type="text" name="input_username" id="input_username">

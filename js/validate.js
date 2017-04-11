@@ -151,7 +151,7 @@ $(document).ready(function() {
 	$('#username').blur(userValidator);
 	$('#password').blur(passwordStrength);
 	$('#dob').datepicker();
-	$("form").submit(function(){
+	$('#registerform').on('submit', function(e){
 
 		if($('#fname').val()=="" || $('#lname').val()=="" || $('#email').val()==""
 			&& $('#dob').val()=="" || $('#username').val()=="" || $('#password').val()==""){

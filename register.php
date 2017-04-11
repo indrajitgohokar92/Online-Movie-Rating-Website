@@ -31,7 +31,7 @@
 			</div>
 		      <div class="content">
 	      	     <div class="register">
-			  	  	<form action="db/adduser.php" method="post">
+			  	  	<form id="registerform" action="db/adduser.php" method="post" name="registerform">
 									<div class="register-top-grid">
 										<h3>Personal Information</h3>
 										 <div>
@@ -65,7 +65,7 @@
 										 <div class="clearfix"> </div>
 									</div>
 								  <div class="clearfix"> </div>
-									<input class="acount-btn" type="submit" value="Submit">
+									<input class="acount-btn" type="submit" value="Register">
 									<i id="formstatus"></i>
 									<div class="clearfix"> </div>
 			  		</form>
