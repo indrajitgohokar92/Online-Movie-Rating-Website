@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="register">
 					<div class="col-md-6 login-left">
 						<h3>New Customers</h3>
-						<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+						<p>By creating an account with our store, you will be able to save a watchlist, leave your own reviews, rate movies and make your movieDB experience better for yourself and everyone else. Join in!</p>
 						<a class="acount-btn" href="register.php">Create an Account</a>
 					</div>
 					<div class="col-md-6 login-right">
@@ -44,8 +44,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<i id="formstatus">
 								<?php if (isset($_SESSION['LoginError']))
 								{
-    							echo $_SESSION['LoginError'];
-    							unset($_SESSION['LoginError']);
+    								echo $_SESSION['LoginError'];
+    								unset($_SESSION['LoginError']);
 								}
 								?>
 							</i>

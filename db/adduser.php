@@ -28,7 +28,6 @@
 		$hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);
 
 		$updatePwd_query = "update users set password = '".$hashedPassword."' where username = '".$username."' and user_id = '".$user_id."'";
-		// echo $updatePwd_query;
 		$resultPwd = mysqli_query($dbcon, $updatePwd_query) or die("Error updating DB".mysqli_error($dbcon)); // store the results of $query
 
 		$dateofbirth = date('Y-m-d', strtotime($dateofbirth));

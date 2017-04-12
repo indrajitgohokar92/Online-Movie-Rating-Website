@@ -18,8 +18,6 @@
             $isAdminFromDB = $row['is_admin'];
 		}
 
-        // echo $isAdminFromDB;
-
         $input_saltedPassword = $saltFromDB.$input_password;
 
         if (password_verify($input_saltedPassword, $passwordfromDB)) {
@@ -37,7 +35,6 @@
             $_SESSION['firstname'] = $fnamefromDB;
             $_SESSION['lastname'] = $lnameFromDB;
             $_SESSION['isAdmin'] = $isAdminFromDB;
-
 
             $port = $_SERVER['SERVER_PORT'];
           	$locationUrl = "http://localhost:".$port."/index.php";

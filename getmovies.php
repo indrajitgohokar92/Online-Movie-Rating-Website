@@ -111,15 +111,15 @@ $total_pages = ceil($total_records / $limit);
 												if(mysqli_num_rows($movieresult)== 0){
 				   								echo "<td><h4 class='m_2'>No Results!</h4></td>";
 												}else{
-														while ($row = mysqli_fetch_array($movieresult)) {
-															$imgloc = $row["img_location"];
-															$id= $row["movie_id"];
-															$title=$row["movie_title"];
-															$loc="images/movie_posters/".$imgloc;
-															$link="single.php?id=".$id;
-															echo "<td><a href=".$link."><img src=".$loc." height='300' width='220' /></a>";
-															echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
-														}
+													while ($row = mysqli_fetch_array($movieresult)) {
+														$imgloc = $row["img_location"];
+														$id= $row["movie_id"];
+														$title=$row["movie_title"];
+														$loc="images/movie_posters/".$imgloc;
+														$link="single.php?id=".$id;
+														echo "<td><a href=".$link."><img src=".$loc." height='300' width='220' /></a>";
+														echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
+													}
 												}
 											?>
 										</tr>
@@ -130,7 +130,7 @@ $total_pages = ceil($total_records / $limit);
 									for ($i=1; $i<=$total_pages; $i++) {
 										 $pagLink .= "<a href='getmovies.php?page=".$i."'>".$i."</a>";
 									};
-									echo $pagLink . "</div>";
+									echo $pagLink."</div>";
 								?>
 							</div>
 					</div>
