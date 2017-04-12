@@ -22,7 +22,6 @@ if(isset($search_term) && isset($movie_category)){
 		$pagingsql = "select COUNT(movie_id) FROM movies;";
 		$_SESSION["q_movie"]=$qmovie;
 		$_SESSION["paging_sql"]=$pagingsql;
-		echo $querymovie;
 	} elseif(($search_term == "Search Movies...") && !($movie_category == "all")) {
 		$qmovie = "select movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
@@ -126,7 +125,7 @@ $total_pages = ceil($total_records / $limit);
 									</tbody>
 								</table>
 								<?php
-									$pagLink = "<div class='pagination'>";
+									$pagLink = "<div class='pagination' align='justify'>";
 									for ($i=1; $i<=$total_pages; $i++) {
 										 $pagLink .= "<a href='getmovies.php?page=".$i."'>".$i."</a>";
 									};
