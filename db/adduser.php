@@ -12,7 +12,7 @@
 
 		$salt = bin2hex(random_bytes(8));	// generate new random select for every user who signs up
 
-		$insertUnameNsalt_query = "insert into users(username, salt) values('".$username."','".$salt."')";
+		$insertUnameNsalt_query = "insert into users(username, salt, is_admin) values('".$username."','".$salt."','n')";
 		$resultUnameNsalt = mysqli_query($dbcon, $insertUnameNsalt_query) or die("Error inserting username and salt into db".mysqli_error($dbcon));
 
 		$selectUseridNsalt_query = "select user_id, salt from users where username = '".$username."'";

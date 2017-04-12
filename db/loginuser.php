@@ -11,11 +11,14 @@
 
         $user_idfromDB = $user_idfromDB = $saltFromDB = "";
 		while($row = mysqli_fetch_assoc($resultUseridNsalt)){
-			      $user_idfromDB = $row['user_id'];
+            $user_idfromDB = $row['user_id'];
             $usernameFromDB = $row['username'];
             $saltFromDB = $row['salt'];
             $passwordfromDB = $row['password'];
+            $isAdminFromDB = $row['is_admin'];
 		}
+
+        // echo $isAdminFromDB;
 
         $input_saltedPassword = $saltFromDB.$input_password;
 
@@ -33,6 +36,8 @@
             $_SESSION['username'] = $usernameFromDB;
             $_SESSION['firstname'] = $fnamefromDB;
             $_SESSION['lastname'] = $lnameFromDB;
+            $_SESSION['isAdmin'] = $isAdminFromDB;
+
 
             $port = $_SERVER['SERVER_PORT'];
           	$locationUrl = "http://localhost:".$port."/index.php";
