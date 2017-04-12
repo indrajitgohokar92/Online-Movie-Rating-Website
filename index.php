@@ -70,8 +70,8 @@
 				<div class="content">
 					<div class="box_1">
 					 <h1 class="m_2">Featured Movies</h1>
-				<div class="clearfix"> </div>
-				</div>
+					 <div class="clearfix"> </div>
+					</div>
 				<div class="box_2">
 					<div class="col-md-5 grid_3">
 					  <div class="row_1">

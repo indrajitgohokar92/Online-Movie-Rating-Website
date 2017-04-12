@@ -1,6 +1,72 @@
 <!DOCTYPE HTML>
 <?php
 session_start();
+$search_term = $_REQUEST['searchterm'];
+$movie_category = $_REQUEST['moviegenre'];
+
+$movie_category = strtolower($movie_category);
+
+$dbcon = new mysqli("localhost", "root", "root", "moviedb");
+
+$limit = 2;
+if (isset($_GET["page"])) {
+	 $page  = $_GET["page"];
+ } else {
+	 $page=1;
+ };
+$start_from = ($page-1) * $limit;
+if(isset($search_term) && isset($movie_category)){
+	if(($search_term == "Search Movies...") && ($movie_category == "all")){
+		$qmovie = "select movie_id, movies.movie_title, img_location from movies LIMIT ";
+		$querymovie =  $qmovie."$start_from, $limit;";
+		$pagingsql = "select COUNT(movie_id) FROM movies;";
+		$_SESSION["q_movie"]=$qmovie;
+		$_SESSION["paging_sql"]=$pagingsql;
+		echo $querymovie;
+	} elseif(($search_term == "Search Movies...") && !($movie_category == "all")) {
+		$qmovie = "select movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
+						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
+						and categories.category_name='".$movie_category."' LIMIT ";
+		$querymovie =  $qmovie."$start_from, $limit;";
+		$pagingsql = "select COUNT(movie_id) from movies,categories,movies_categories where
+						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
+						and categories.category_name='".$movie_category."';";
+						$_SESSION["q_movie"]=$qmovie;
+						$_SESSION["paging_sql"]=$pagingsql;
+	} elseif(!($search_term == "Search Movies...") && ($movie_category == "all")) {
+		$qmovie = "select distinct movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
+						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
+						and movies.movie_title LIKE '%$search_term%' LIMIT ";
+		$querymovie =  $qmovie."$start_from, $limit;";
+		$pagingsql = "select COUNT(movie_id) from movies,categories,movies_categories where
+						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
+						and movies.movie_title LIKE '%$search_term%';";
+						$_SESSION["q_movie"]=$qmovie;
+						$_SESSION["paging_sql"]=$pagingsql;
+	} else {
+		$qmovie = "select distinct movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
+						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
+						and categories.category_name='".$movie_category."' and movies.movie_title LIKE '%$search_term%' LIMIT ";
+		$querymovie =  $qmovie."$start_from, $limit;";
+		$pagingsql = "select COUNT(movie_id) from movies,categories,movies_categories where
+						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
+						and categories.category_name='".$movie_category."' and movies.movie_title LIKE '%$search_term%';";
+						$_SESSION["q_movie"]=$qmovie;
+						$_SESSION["paging_sql"]=$pagingsql;
+	}
+}else{
+	if(isset($_SESSION["q_movie"]) && isset($_SESSION["paging_sql"])){
+		$qmovie = $_SESSION["q_movie"];
+		$pagingsql = $_SESSION["paging_sql"];
+		$querymovie =  $qmovie."$start_from, $limit;";
+	}
+}
+$movieresult = mysqli_query($dbcon, $querymovie);
+$paging_result = mysqli_query($dbcon,$pagingsql);
+$row = mysqli_fetch_row($paging_result);
+$total_records = $row[0];
+$total_pages = ceil($total_records / $limit);
+
 ?>
 <html>
 <head>
@@ -25,28 +91,6 @@ session_start();
 	<script type="text/javascript" src="js/validate.js"></script>
 	<script type="text/javascript" src="js/jquery.bootpag.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<script typ>
-	$(document).ready(function(){
-		var myArray = JSON.parse(<?php echo json_encode($_SESSION['movie_array']); ?>);
-		$('#page-selection').bootpag({
-				total: myArray.length
-
-		}).on("page", function(event, num){
-			var myArray = JSON.parse(<?php echo json_encode($_SESSION['movie_array']); ?>);
-			var html="<table border-collapse: separate border-spacing: 0 1em>";
-			for (i in myArray)
-			{
-				var imgloc = JSON.parse(JSON.stringify(myArray[i].movie_location));
-				var id= JSON.parse(JSON.stringify(myArray[i].movie_id));
-				var loc="images/movie_posters/"+imgloc;
-				var link="single.php?id="+id;
-				html += "<tr><td><a href="+link+"><img src="+loc+" height='390' width='220' /></a></td></tr>";
-			}
-			html += "</table>";
-			$("#contentdiv").html(html); // some ajax content loading...
-		});
-	});
-	</script>
 </head>
 <body>
 		<div class="container">
@@ -55,11 +99,39 @@ session_start();
 						<?php include('header.php');?>
 					</div>
 					<div class="content">
+						<div class="box_1">
+						 <h1 class="m_2">Results</h1>
+						 <div class="clearfix"> </div>
+						</div>
 							<div id="page-content" class="well">
-							<div id="contentdiv" align="center">
-
-							</div>
-					    <div id="page-selection" align="center"></div>
+								<table class="table table-bordered table-striped">
+									<tbody>
+										<tr>
+											<?php
+												if(mysqli_num_rows($movieresult)== 0){
+				   								echo "<td><h4 class='m_2'>No Results!</h4></td>";
+												}else{
+														while ($row = mysqli_fetch_array($movieresult)) {
+															$imgloc = $row["img_location"];
+															$id= $row["movie_id"];
+															$title=$row["movie_title"];
+															$loc="images/movie_posters/".$imgloc;
+															$link="single.php?id=".$id;
+															echo "<td><a href=".$link."><img src=".$loc." height='390' width='220' /></a>";
+															echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
+														}
+												}
+											?>
+										</tr>
+									</tbody>
+								</table>
+								<?php
+									$pagLink = "<div class='pagination'>";
+									for ($i=1; $i<=$total_pages; $i++) {
+										 $pagLink .= "<a href='getmovies.php?page=".$i."'>".$i."</a>";
+									};
+									echo $pagLink . "</div>";
+								?>
 							</div>
 					</div>
 			  </div>
