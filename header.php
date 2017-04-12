@@ -1,16 +1,17 @@
 <?php
     session_start();
+    $dbcon = new mysqli("localhost", "root", "root", "moviedb");
+    $username = $_SESSION['username'];
+    $usertypequery = "select is_admin from users where username=".$username.";";
+    $usertyperesult = mysqli_query($dbcon,$usertypequery);
+    while($row1 = mysqli_fetch_array($usertyperesult))
+    {
+      //get the user type here and get tabs based on that type
+      echo $row1['is_admin'];
+    }
 ?>
 <div class="col-sm-2 logo"><a href="index.php"><img src="images/logo.png" alt=""/></a></div>
-<div class="col-sm-6 nav">
-    <!-- <ul>
-        <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.php"> </a></span></li>
-        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="movie"><a href="movie.php"> </a> </span></li>
-        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="video"><a href="movie.php"> </a></span></li>
-        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="game"><a href="movie.php"> </a></span></li>
-        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="tv"><a href="movie.php"> </a></span></li>
-        <li><span class="simptip-position-bottom simptip-movable" data-tooltip="more"><a href="movie.php"> </a></span></li>
-    </ul> -->
+<div class="col-sm-5 nav">
     <div class="search">
         <form id="searchForm" method="post" action="getmovies.php">
             <input type="text" name="searchterm" value="Search Movies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
@@ -40,6 +41,20 @@
         </p></li>
         <div class="clearfix"></div>
     </ul>
+</div>
+<div class="col-sm-1 nav">
+<?php
+if(isset($_SESSION["username"])){
+    echo '<ul>
+          <!-- <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.php"> </a></span></li> -->
+          <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="movie"><a href="movie.php"> </a> </span></li> -->
+          <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Wishlist"><a href="movie.php"> </a></span></li>
+          <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="game"><a href="movie.php"> </a></span></li> -->
+          <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="tv"><a href="movie.php"> </a></span></li> -->
+          <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="more"><a href="movie.php"> </a></span></li> -->
+          </ul>';
+}
+?>
 </div>
 <div class="col-sm-2 header_right">
     <ul class="header_right_box">

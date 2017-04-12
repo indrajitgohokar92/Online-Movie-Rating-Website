@@ -26,8 +26,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- Movie variant with time -->
                             <div class="movie movie-test movie-test-dark movie-test-left">
                                 <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/1.jpg" class="img-responsive" alt=""/>
+                                    <a href="single.php?id=1" class="movie-beta__link">
+                                        <img alt="" src="images/movie_posters/1.jpg" class="img-responsive" alt=""/>
                                     </a>
                                 </div>
 								<div class="movie__info">
@@ -47,8 +47,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<!-- Movie variant with time -->
                             <div class="movie movie-test movie-test-dark movie-test-left">
                                 <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/2.jpg" class="img-responsive" alt=""/>
+                                    <a href="single.php?id=1" class="movie-beta__link">
+                                        <img alt="" src="images/movie_posters/1.jpg" class="img-responsive" alt=""/>
                                     </a>
                                 </div>
                                 <div class="movie__info">
@@ -66,8 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="movie movie-test movie-test-light movie-test-right">
                                <div class="movie__images">
-                                    <a href="single.html" class="movie-beta__link">
-                                        <img alt="" src="images/3.jpg" class="img-responsive" alt=""/>
+                                    <a href="single.php?id=2" class="movie-beta__link">
+                                        <img alt="" src="images/movie_posters/2.jpg" class="img-responsive" alt=""/>
                                     </a>
                                 </div>
                                 <div class="movie__info">
@@ -85,12 +85,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="movie movie-test movie-test-light movie-test-right">
                                <div class="movie__images">
-                                    <a href="single.html" class="movie-beta__link">
-                                        <img alt="" src="images/4.jpg" class="img-responsive" alt=""/>
+                                    <a href="single.php?id=3" class="movie-beta__link">
+                                        <img alt="" src="images/movie_posters/3.jpg" class="img-responsive" alt=""/>
                                     </a>
                                 </div>
                                 <div class="movie__info">
-                                    <a href="single.html" class="movie__title">Ipsum (2015)  </a>
+                                    <a href="single.php?id=4" class="movie__title">Ipsum (2015)  </a>
                                     <p class="movie__time">80 min</p>
 									<p class="movie__option"><a href="single.html">Contray</a> | <a href="single.html">Dolor sit</a> | <a href="single.html">Drama</a></p>
                                     <ul class="list_6">
@@ -104,12 +104,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="movie movie-test movie-test-dark movie-test-left">
                                 <div class="movie__images">
-                                    <a href="single.html" class="movie-beta__link">
-                                        <img alt="" src="images/5.jpg" class="img-responsive" alt=""/>
+                                    <a href="single.php?id=5" class="movie-beta__link">
+                                        <img alt="" src="images/movie_posters/5.jpg" class="img-responsive" alt=""/>
                                     </a>
                                 </div>
 								<div class="movie__info">
-                                    <a href="single.html" class="movie__title">Ipsum (2015)  </a>
+                                    <a href="single.php?id=3" class="movie__title">Ipsum (2015)  </a>
                                     <p class="movie__time">80 min</p>
 									<p class="movie__option"><a href="single.html">Contray</a> | <a href="single.html">Dolor sit</a> | <a href="single.html">Drama</a></p>
                                     <ul class="list_6">

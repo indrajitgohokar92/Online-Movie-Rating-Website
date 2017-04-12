@@ -62,23 +62,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														?>
                           </div>
                             <div class="movie_rate">
-															<form action="" class="sky-form">
+															<form id="user_ratings" action="" class="sky-form">
 								              	<div class="rating_desc"><p>Your Vote :</p></div>
-																	<select name="quicksearch" id="genre" class="quicksearch_dropdown navbarSprite">
-															       	<option value="all" selected="selected">Your Rating</option>
-															        <option value="1" >1</option>
-															        <option value="2" >2</option>
-															        <option value="3" >3</option>
-															        <option value="4" >4</option>
-															        <option value="5" >5</option>
-                                      <option value="6" >6</option>
-															        <option value="7" >7</option>
-															        <option value="8" >8</option>
-															        <option value="9" >9</option>
-															        <option value="10" >10</option>
-															    </select>
-														  	</form>
-																<div class="clearfix"> </div>
+																<p>
+                                  <select name="quicksearch" id="genre" class="quicksearch_dropdown navbarSprite">
+														       	<option value="all" selected="selected">Your Rating</option>
+														        <option value="1" >1</option>
+														        <option value="2" >2</option>
+														        <option value="3" >3</option>
+														        <option value="4" >4</option>
+														        <option value="5" >5</option>
+                                    <option value="6" >6</option>
+														        <option value="7" >7</option>
+														        <option value="8" >8</option>
+														        <option value="9" >9</option>
+														        <option value="10" >10</option>
+														       </select>
+                                </p>
+                                <br />
+                                <div class="rating_desc"><p>Add to Watchlist :</p></div>
+                                <p>
+                                  <input type="checkbox" name="watchlist" value="Add to WishList">
+                                </p>
+                              </form>
+															<div class="clearfix"> </div>
                           </div>
                         </div>
 
