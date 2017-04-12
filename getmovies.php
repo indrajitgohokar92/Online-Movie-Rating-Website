@@ -82,7 +82,8 @@ $total_pages = ceil($total_records / $limit);
 		 }
 	</script>
 	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- start plugins -->
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>

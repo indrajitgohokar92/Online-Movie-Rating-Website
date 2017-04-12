@@ -6,7 +6,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<!-- <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- start plugins -->
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
@@ -50,7 +51,7 @@
 									</li>
 						  </ul>
 					</div>
-					<div class="banner_desc">
+					<!-- <div class="banner_desc">
 				    	<div class="col-md-9">
 				    		<ul class="list_1">
 				    			<li>Published <span class="m_1">Feb 20, 2015</span></li>
@@ -65,7 +66,7 @@
 				    			<li><i class="icon3"> </i><p>546</p></li>
 				    		</ul>
 				    	</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="content">
 					<div class="box_1">
@@ -145,7 +146,7 @@
 					   <div class="clearfix"> </div>
 					   </div>
 					   <div class="video">
-					      <iframe width="100%" height="" src="https://www.youtube.com/embed/s1QeoSedWmM" frameborder="0" allowfullscreen></iframe>
+						  <iframe width="100%" src="https://www.youtube.com/embed/Fm3VgcyaPfo" frameborder="0" allowfullscreen></iframe>
 					  </div>
 					  <div class="row_5">
 					  	<div class="col-md-6">

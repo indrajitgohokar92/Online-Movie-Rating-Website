@@ -30,9 +30,9 @@ body a{
 	padding:5em 0;
 }
 .header_top{
-	background: #fff;
-padding:2em 1em 1.8em;
-border-top-left-radius: 3px;
+background: #fff;
+padding:2em 1em 0.5em;
+border-top-left-rad	ius: 3px;
 -webkit-border-top-left-radius: 3px;
 -moz-border-top-left-radius: 3px;
 -o-border-top-left-radius: 3px;
@@ -589,7 +589,7 @@ background: none;
 position: relative;
 margin-bottom: 2em;
 float: none;
-width: 80%;
+width: 100%;
 padding: 1px;
 }
 .search form input[type="text"] {
