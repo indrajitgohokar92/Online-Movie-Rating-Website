@@ -8,7 +8,7 @@ $movie_category = strtolower($movie_category);
 
 $dbcon = new mysqli("localhost", "root", "root", "moviedb");
 
-$limit = 2;
+$limit = 3;
 if (isset($_GET["page"])) {
 	 $page  = $_GET["page"];
  } else {
@@ -27,17 +27,17 @@ if(isset($search_term) && isset($movie_category)){
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and categories.category_name='".$movie_category."' LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
-		$pagingsql = "select COUNT(movie_id) from movies,categories,movies_categories where
+		$pagingsql = "select COUNT(movies.movie_id) from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and categories.category_name='".$movie_category."';";
 						$_SESSION["q_movie"]=$qmovie;
 						$_SESSION["paging_sql"]=$pagingsql;
-	} elseif(!($search_term == "Search Movies...") && ($movie_category == "all")) {
+		} elseif(!($search_term == "Search Movies...") && ($movie_category == "all")) {
 		$qmovie = "select distinct movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and movies.movie_title LIKE '%$search_term%' LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
-		$pagingsql = "select COUNT(movie_id) from movies,categories,movies_categories where
+		$pagingsql = "select COUNT(movies.movie_id) from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and movies.movie_title LIKE '%$search_term%';";
 						$_SESSION["q_movie"]=$qmovie;
@@ -47,7 +47,7 @@ if(isset($search_term) && isset($movie_category)){
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and categories.category_name='".$movie_category."' and movies.movie_title LIKE '%$search_term%' LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
-		$pagingsql = "select COUNT(movie_id) from movies,categories,movies_categories where
+		$pagingsql = "select COUNT(movies.movie_id) from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and categories.category_name='".$movie_category."' and movies.movie_title LIKE '%$search_term%';";
 						$_SESSION["q_movie"]=$qmovie;
@@ -116,7 +116,7 @@ $total_pages = ceil($total_records / $limit);
 															$title=$row["movie_title"];
 															$loc="images/movie_posters/".$imgloc;
 															$link="single.php?id=".$id;
-															echo "<td><a href=".$link."><img src=".$loc." height='390' width='220' /></a>";
+															echo "<td><a href=".$link."><img src=".$loc." height='300' width='220' /></a>";
 															echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
 														}
 												}
