@@ -1,3 +1,4 @@
+
 <?php
     session_start();
     // $dbcon = new mysqli("localhost", "root", "root", "moviedb");
@@ -10,6 +11,17 @@
     //   echo $row1['is_admin'];
     // }
 ?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/validate.js"></script>
+<script type="text/javascript" src="js/validateMovie.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('dropdown-toggle').dropdown();
+});
+</script>
 <div class="col-sm-2 logo"><a href="index.php"><img src="images/logo.png" alt=""/></a></div>
 <div class="col-sm-5 ">
     <div class="search">
@@ -44,18 +56,22 @@
         <li><p>
 <?php
 if(isset($username) and $adminLogin == 'n'){
-    // echo '<ul>
-    //       <!-- <li> <span class="simptip-position-bottom simptip-movable" data-tooltip="comic"><a href="movie.php"> </a></span></li> -->
-    //       <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="movie"><a href="movie.php"> </a> </span></li> -->
-    //       <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Wishlist"><a href="movie.php"> </a></span></li> -->
-    //       <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="game"><a href="movie.php"> </a></span></li> -->
-    //       <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="tv"><a href="movie.php"> </a></span></li> -->
-    //       <!-- <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Admin"><a href="movie.php"> </a></span></li> -->
-    //       </ul>';
-    echo '<a href="login.php"><span style="font-size:1.5em" class="glyphicon glyphicon-list"></span></a>';
+    echo '<a href="watchList.php"><span style="font-size:1.5em" class="glyphicon glyphicon-list"></span></a>';
 }
 if(isset($username) and $adminLogin == 'y'){
-    echo '<ul class="header_right_box"><li><p><a href="login.php"><span style="font-size:1.5em" class="glyphicon glyphicon-cog"></span></a></p></li></ul>';
+    echo '
+    <li class="dropdown">
+      <button type="button" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="glyphicon glyphicon-cog"><span class="caret"></span></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="adminhome.php">Admin Home</a></li>
+        <li><a href="addmovie.php">Add Movies</a></li>
+        <li><a href="deletemovie.php">Delete Movie</a></li>
+        <li><a href="updatemovie.php">Update Movie</a></li>
+      </ul>
+    </li>
+    ';
 }
 ?>
 </p></li>
