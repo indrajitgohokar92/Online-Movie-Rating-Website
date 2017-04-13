@@ -73,22 +73,22 @@ $total_pages = ceil($total_records / $limit);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Movie_store" />
-	<script type="application/x-javascript">
+	<!-- <script type="application/x-javascript">
 		 addEventListener("load", function() {
 		 	setTimeout(hideURLbar, 0);
 		 }, false);
 		 function hideURLbar(){
 		 	window.scrollTo(0,1);
 		 }
-	</script>
+	</script> -->
 	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
 	<!-- <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- start plugins -->
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="js/validate.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="js/validate.js"></script> -->
 	<script type="text/javascript" src="js/jquery.bootpag.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 </head>
