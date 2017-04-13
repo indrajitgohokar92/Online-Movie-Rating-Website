@@ -12,11 +12,11 @@
     // }
 ?>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function() {
     $('dropdown-toggle').dropdown();
 });
-</script>
+</script> -->
 <div class="col-sm-2 logo"><a href="index.php"><img src="images/logo.png" alt=""/></a></div>
 <div class="col-sm-5 ">
     <div class="search">

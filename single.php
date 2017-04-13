@@ -21,13 +21,13 @@
     while($row5 = mysqli_fetch_assoc($resultUserId)){
         $userId = intval($row5['user_id']);
     }
-    var_dump($userId);
+    // var_dump($userId);
     if (isset($userId)){
         $queryRating = "select rating from ratings where user_id = ".$userId." and movie_id =".$mov_id.";";
     } else {
         $queryRating = "select rating from ratings where movie_id =".$mov_id.";";
     }
-    echo $queryRating;
+    // echo $queryRating;
     $resultRating = mysqli_query($dbcon, $queryRating) or die("Error getting rating from db". mysqli_error($dbcon));
 
     if(isset($userId)){
