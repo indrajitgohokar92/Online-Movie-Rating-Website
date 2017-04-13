@@ -24,11 +24,10 @@
     $releasedate = date('Y-m-d', strtotime($releasedate));
 
 
-    $target_dir="C:/MAMP/htdocs/images/movie_posters";
     //movie poster part
 
     echo $target_dir;
-    $target_dir = "C:/MAMP/htdocs/images/movie_posters/";
+    $target_dir = "../images/movie_posters/";
     $target_file = $target_dir . basename($_FILES["movie_image"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
