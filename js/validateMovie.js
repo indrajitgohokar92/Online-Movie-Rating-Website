@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var movietitleValidator = fieldValidator(
 			$('#movietitle'),"The Movie Title must contain only alphabetical characters and must not be empty",function(input) {
 				if (input.length < 2) { return "Movie Title is too short!"}
-				check_fname = /^[A-Za-z]+$/;
+				check_fname = /^[A-Za-z_ ]+$/;
 				if(check_fname.test(input)){
 					return "Success"
 				}else{
@@ -20,7 +20,7 @@ $(document).ready(function() {
   var countryValidator = fieldValidator(
 			$('#country'),"The Country must contain only alphabetical characters and must not be empty",function(input) {
 				if (input.length < 2) { return "Country name is too short!"}
-				check_fname = /^[A-Za-z]+$/;
+				check_fname = /^[A-Za-z_ ]+$/;
 				if(check_fname.test(input)){
 					return "Success"
 				}else{
@@ -31,7 +31,8 @@ $(document).ready(function() {
   var agerestrictionValidator = fieldValidator(
 			$('#agerestriction'),"The Age Restriction must contain only alphabetical characters and must not be empty",function(input) {
 				if (input.length < 1) { return "Age Restriction is too short!"}
-				check_fname = /^[A-Za-z]+$/;
+				if (input.length > 2) { return "Age Restriction is too long!"}
+				check_fname = /^[A-Za-z_ ]+$/;
 				if(check_fname.test(input)){
 					return "Success"
 				}else{
@@ -42,33 +43,69 @@ $(document).ready(function() {
 
   var synopsisValidator = fieldValidator(
 			$('#synopsis'),"The Synopsis must not be empty",function(input) {
-				if (input.length < 2) { return "Synopsis is is too short!"}
-				check_fname = /^[A-Za-z]+$/;
-				if(check_fname.test(input)){
-					return "Success"
-				}else{
-						return "Should contain alphabetical characters only!"
+				if (input.length < 2) { return "Synopsis is too short!"}
+				else{
+						return "Success"
 				}
 			}
 	);
 
+  var criticsratingValidator = fieldValidator(
+			$('#criticsrating'),"The Critics rating must not be empty",function(input) {
+				if (input.length < 1) { return "Critics rating invalid!"}
+				if (input.length > 3) { return input.length}
+				check_fname = /^[0-9].[0-9]+$/;
+				if(check_fname.test(input)){
+					return "Success"
+				}else{
+						return "Should be between 1.0-9.9 only!"
+				}
+			}
+	);
+
+  var releaseyearValidator = fieldValidator(
+			$('#releaseyear'),"The Release year must not be empty",function(input) {
+				if (!(input.length == 4)) { return "Release year should be 4 digit number!"}
+				check_fname = /^[0-9]+$/;
+				if(check_fname.test(input)){
+					return "Success"
+				}else{
+						return "Should contain numbers only!"
+				}
+			}
+	);
+
+  var audienceratingValidator = fieldValidator(
+			$('#audiencerating'),"The audience rating must not be empty",function(input) {
+				if (input.length < 1) { return "Audience rating invalid!"}
+				if (input.length > 3) { return "Audience rating invalid!"}
+				check_fname = /^[0-9].[0-9]+$/;
+				if(check_fname.test(input)){
+					return "Success"
+				}else{
+						return "Should be between 1.0-9.9 only!"
+				}
+			}
+	);
 
 	//Event handlers.
 	$('#movietitle').focus(movietitleValidator);
   $('#country').focus(countryValidator);
+  $('#criticsrating').focus(criticsratingValidator);
+  $('#releaseyear').focus(releaseyearValidator);
+  $('#audiencerating').focus(audienceratingValidator);
 	$('#agerestriction').focus(agerestrictionValidator);
 	$('#synopsis').focus(synopsisValidator);
-  $('#criticsrating').focus(criticsratingValidator);
-	$('#releaseyear').focus(releaseyearValidator);
-	$('#audiencerating').focus(audienceratingValidator);
+
 
 	$('#movietitle').blur(movietitleValidator);
 	$('#country').blur(countryValidator);
+  $('#criticsrating').blur(criticsratingValidator);
+  $('#releaseyear').blur(releaseyearValidator);
+  $('#audiencerating').blur(audienceratingValidator);
 	$('#agerestriction').blur(agerestrictionValidator);
 	$('#synopsis').blur(synopsisValidator);
-  $('#criticsrating').focus(criticsratingValidator);
-	$('#releaseyear').focus(releaseyearValidator);
-	$('#audiencerating').focus(audienceratingValidator);
+
 
 	$('#releasedate').datepicker();
 

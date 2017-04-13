@@ -62,7 +62,7 @@ $total_pages = ceil($total_records / $limit);
 					</div>
 					<div class="content">
 						<div class="box_1">
-						 <h1 class="m_2">Admin Home(Includes the movie database)</h1>
+						 <h1 class="m_2">Delete Movies(Soft Delete)</h1>
 						 <div class="clearfix"> </div>
 						</div>
 							<div id="page-content" class="well">
@@ -80,7 +80,30 @@ $total_pages = ceil($total_records / $limit);
 														$loc="images/movie_posters/".$imgloc;
 														$link="single.php?id=".$id;
 														echo "<td><a href=".$link."><img src=".$loc." height='300' width='220' /></a>";
-														echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
+														echo "<br /><h3><a href=".$link.">".$title."</a></h3>";
+                            $isDeletedSql = "select is_deleted FROM movies where movie_id=".$id.";";
+                            $isDeletedResult = mysqli_query($dbcon, $isDeletedSql);
+
+                            while($row = mysqli_fetch_array($isDeletedResult)) {
+                              $isdeleted1 = $row['is_deleted'];
+                              if($isdeleted1 == 'n'){
+                                $deletedVar1 = 'Not Deleted';
+                                $deletedVar2 = 'Soft Delete';
+                                $isdeleted2 = 'y';
+                                $submitValue = 'Delete Movie';
+                              }
+                              else{
+                                $deletedVar1 = 'Deleted';
+                                $deletedVar2 = 'Add again';
+                                $isdeleted2 = 'n';
+                                $submitValue = 'Add Movie';
+                              }
+                              echo '<form class="deletemovieform" action="db/softdeletemovie.php" method="post">';
+                              echo '<br /><input type="radio" name="isdeleted'.$title.'" value='.$isdeleted1.' checked="checked"/> '.$deletedVar1.'<br />';
+                              echo '<br /><input type="radio" name="isdeleted'.$title.'" value='.$isdeleted2.' /> '.$deletedVar2.'<br />';
+                              echo '<input class="acount-btn" type="submit" value="'.$submitValue.'" />
+                                   </form></td>';
+                            }
 													}
 												}
 											?>
@@ -90,7 +113,7 @@ $total_pages = ceil($total_records / $limit);
 								<?php
 									$pagLink = "<div class='pagination' align='justify'>";
 									for ($i=1; $i<=$total_pages; $i++) {
-										 $pagLink .= "<a href='adminhome.php?page=".$i."'>".$i."</a>";
+										 $pagLink .= "<a href='deletemovie.php?page=".$i."'>".$i."</a>";
 									};
 									echo $pagLink."</div>";
 								?>

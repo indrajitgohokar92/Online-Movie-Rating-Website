@@ -1,5 +1,15 @@
 <!DOCTYPE HTML>
 <?php
+$dbcon = new mysqli("localhost", "root", "root", "moviedb");
+$queryactors = "select actor_id,actor_name from actors;";
+$querydirectors = "select director_id,director_name from directors;";
+$queryproducers = "select producer_id,producer_name from producers;";
+$querycategory = "select category_id,category_name from categories;";
+$actor_result = mysqli_query($dbcon, $queryactors);
+$director_result = mysqli_query($dbcon,$querydirectors);
+$producer_result = mysqli_query($dbcon,$queryproducers);
+$category_result = mysqli_query($dbcon,$querycategory);
+$row = mysqli_fetch_row($paging_result);
 ?>
 <html>
 <head>
@@ -20,6 +30,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- start plugins -->
+
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -33,9 +44,8 @@
 						 <h1 class="m_2">Add Movie</h1>
 						 <div class="clearfix"> </div>
 						</div>
-
               <div class="register">
-                  <form id="movieform" action="" method="post" name="movieform">
+                  <form id="movieform" action="db/insertmovie.php" method="post" name="movieform"  enctype="multipart/form-data">
                       <div class="register-top-grid">
                           <div>
                               <span>Movie Title<label>*</label></span>
@@ -43,14 +53,15 @@
                           </div>
                           <div>
                               <span>Release Date<label>*</label></span>
-                              <input id="releasedate" size="16" name="releasedate" type="text"/>
-                          </div>                          <div>
-                              <span>Average Critics Rating(1-10)<label>*</label></span>
-                              <input type="text" name="criticsrating" id="criticsrating" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                              <input id="releasedate" size="16" name="releasedate" type="text">
+                          </div>
+                          <div>
+                              <span>Average Critics Rating<label>*</label></span>
+                              <input type="text" name="criticsrating" id="criticsrating">
                           </div>
                           <div>
                               <span>Year of Release<label>*</label></span>
-                              <input id="releaseyear" size="16" name="releaseyear" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                              <input id="releaseyear" size="16" name="releaseyear" type="text">
                           </div>
                           <div>
                               <span>Country<label>*</label></span>
@@ -65,8 +76,57 @@
                               <textarea name="synopsis" id="synopsis" rows="5" cols="80"></textarea>
                           </div>
                           <div>
-                              <span>Average Audience Rating(1-10)<label>*</label></span>
-                              <input type="text" name="audiencerating" id="audiencerating" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                              <span>Average Audience Rating<label>*</label></span>
+                              <input type="text" name="audiencerating" id="audiencerating">
+                          </div>
+                          <div>
+                              <span>Actor<label>*</label></span>
+                              <select name="movie_actor">
+                                <option value="-1" selected>Select</option>
+                                <?php
+        													while ($row = mysqli_fetch_array($actor_result)) {
+
+                                  echo '<option value="'.$row['actor_name'].'">'.$row['actor_name'].'</option>';
+        													}
+          											?>
+                              </select>
+                          </div>
+                          <div>
+                              <span>Director<label>*</label></span>
+                              <select name="movie_director">
+                                <option value="-1" selected>Select</option>
+                                <?php
+        													while ($row = mysqli_fetch_array($director_result)) {
+                                  echo '<option value="'.$row['director_name'].'">'.$row['director_name'].'</option>';
+        													}
+          											?>
+                              </select>
+                          </div>
+                          <div>
+                              <span>Producer<label>*</label></span>
+                              <select name="movie_producer">
+                                <option value="-1" selected>Select</option>
+                                <?php
+        													while ($row = mysqli_fetch_array($producer_result)) {
+                                  echo '<option value="'.$row['producer_name'].'">'.$row['producer_name'].'</option>';
+        													}
+          											?>
+                              </select>
+                          </div>
+                          <div>
+                              <span>Category<label>*</label></span>
+                              <select name="movie_category">
+                                <option value="Select" selected>Select</option>
+                                <?php
+        													while ($row = mysqli_fetch_array($category_result)) {
+                                  echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
+        													}
+          											?>
+                              </select>
+                          </div>
+                          <div>
+                              <span>Upload Movie Poster<label>*</label></span>
+                              <input type="file" name="movie_image" id="movie_image">
                           </div>
                           <div class="clearfix"> </div>
                       </div>

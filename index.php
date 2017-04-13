@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+define ('SITE_ROOT', realpath(dirname(__FILE__)));
+ ?>
 <html>
 	<head>
 		<title>Best Movie rating</title>
