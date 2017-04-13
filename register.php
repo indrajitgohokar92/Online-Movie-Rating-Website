@@ -13,7 +13,11 @@
             	window.scrollTo(0,1);
             }
         </script>
-        <link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="js/validate.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <!-- start plugins -->
