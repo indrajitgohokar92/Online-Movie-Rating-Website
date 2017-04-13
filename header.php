@@ -34,8 +34,6 @@
         <li class="last"><p>
             <?php
                 echo $_SESSION['firstname']." ".$_SESSION['lastname'];
-                // echo $adminLogin;
-                // echo $adminLogin;
             ?>
         </p></li>
         <div class="clearfix"></div>
