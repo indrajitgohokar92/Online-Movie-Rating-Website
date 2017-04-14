@@ -91,14 +91,14 @@ $total_pages = ceil($total_records / $limit);
                             while($row = mysqli_fetch_array($isDeletedResult)) {
                               $isdeleted1 = $row['is_deleted'];
                               if($isdeleted1 == 'n'){
-                                $deletedVar1 = 'Not Deleted';
-                                $deletedVar2 = 'Soft Delete';
+                                $deletedVar1 = 'Available';
+                                $deletedVar2 = 'Deleted';
                                 $isdeleted2 = 'y';
                                 $submitValue = 'Delete Movie';
                               }
                               else{
                                 $deletedVar1 = 'Deleted';
-                                $deletedVar2 = 'Add again';
+                                $deletedVar2 = 'Available';
                                 $isdeleted2 = 'n';
                                 $submitValue = 'Add Movie';
                               }

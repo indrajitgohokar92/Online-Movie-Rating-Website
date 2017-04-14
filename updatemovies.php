@@ -11,16 +11,16 @@ if (isset($_GET["page"])) {
 	 $page=1;
  };
 $start_from = ($page-1) * $limit;
-if(isset($_SESSION["admin_home_movie"]) && isset($_SESSION["admin_home_paging_sql"])){
-  $qmovie = $_SESSION["admin_home_movie"];
-  $pagingsql = $_SESSION["admin_home_paging_sql"];
+if(isset($_SESSION["admin_update_movie"]) && isset($_SESSION["admin_update_paging_sql"])){
+  $qmovie = $_SESSION["admin_update_movie"];
+  $pagingsql = $_SESSION["admin_update_paging_sql"];
   $querymovie =  $qmovie."$start_from, $limit;";
 }else{
-	$qmovie = "select movie_id, movies.movie_title, img_location from movies where is_deleted='n' LIMIT ";
+	$qmovie = "select movie_id, movies.movie_title, img_location from movies LIMIT ";
 	$querymovie =  $qmovie."$start_from, $limit;";
-	$pagingsql = "select COUNT(movie_id) FROM movies where is_deleted='n';";
-	$_SESSION["admin_home_movie"]=$qmovie;
-	$_SESSION["admin_home_paging_sql"]=$pagingsql;
+	$pagingsql = "select COUNT(movie_id) FROM movies;";
+	$_SESSION["admin_update_movie"]=$qmovie;
+	$_SESSION["admin_update_paging_sql"]=$pagingsql;
 }
 $movieresult = mysqli_query($dbcon, $querymovie);
 $paging_result = mysqli_query($dbcon,$pagingsql);
@@ -66,7 +66,7 @@ $total_pages = ceil($total_records / $limit);
 					</div>
 					<div class="content">
 						<div class="box_1">
-						 <h1 class="m_2">Admin Home(Available Movie's)</h1>
+						 <h1 class="m_2">Update Movies</h1>
 						 <div class="clearfix"> </div>
 						</div>
 							<div id="page-content" class="well">
@@ -82,7 +82,7 @@ $total_pages = ceil($total_records / $limit);
 														$id= $row["movie_id"];
 														$title=$row["movie_title"];
 														$loc="images/movie_posters/".$imgloc;
-														$link="single.php?id=".$id;
+														$link="updatemovie.php?id=".$id;
 														echo "<td><a href=".$link."><img src=".$loc." height='300' width='220' /></a>";
 														echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
 													}
@@ -94,7 +94,7 @@ $total_pages = ceil($total_records / $limit);
 								<?php
 									$pagLink = "<div class='pagination' align='justify'>";
 									for ($i=1; $i<=$total_pages; $i++) {
-										 $pagLink .= "<a href='/adminhome.php?page=".$i."'>".$i."</a>";
+										 $pagLink .= "<a href='/updatemovies.php?page=".$i."'>".$i."</a>";
 									};
 									echo $pagLink."</div>";
 								?>

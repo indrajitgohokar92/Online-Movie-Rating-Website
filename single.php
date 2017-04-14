@@ -24,15 +24,22 @@
     // var_dump($userId);
     if (isset($userId)){
         $queryRating = "select rating from ratings where user_id = ".$userId." and movie_id =".$mov_id.";";
+        $queryWatchlist = "select * from users_watchlists where user_id = ".$userId." and movie_id =".$mov_id.";";
     } else {
         $queryRating = "select rating from ratings where movie_id =".$mov_id.";";
     }
     // echo $queryRating;
     $resultRating = mysqli_query($dbcon, $queryRating) or die("Error getting rating from db". mysqli_error($dbcon));
+    $resultWatchlist = mysqli_query($dbcon, $queryWatchlist) or die("Error getting watchlist from db". mysqli_error($dbcon));
 
     if(isset($userId)){
         while($row6 = mysqli_fetch_assoc($resultRating)){
             $yourRating = intval($row6['rating']);
+        }
+        if (mysqli_num_rows($resultWatchlist)!=0) {
+          $checkWatchList=1;
+        }else{
+          $checkWatchList=0;
         }
     } else {
         $yourRating = "(Login to set)";
@@ -99,31 +106,49 @@
                                 <?php
                                     // display only if user is not an admin
                                     if(isset($username) and $adminLogin == 'n'){
+                                        $rating_array = array(1, 2, 3 , 4, 5, 6, 7, 8, 9, 10);
                                         echo '<div class="movie_rate">
                                             <form id="user_ratings" action="" class="sky-form">
                                                 <div class="rating_desc">
                                                     <p>Your Vote :</p>
                                                 </div>
-                                                <p>
-                                                    <select name="quicksearch" id="movieRatingAdd" class="quicksearch_dropdown navbarSprite">
-                                                        <option value="all" selected="selected">Your Rating</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                        <option value="10">10</option>
-                                                    </select>
+                                                <p>';
+                                                echo'<select name="quicksearch" id="movieRatingAdd" class="quicksearch_dropdown navbarSprite">';
+                                                if (isset($yourRating)) {
+                                                  foreach($rating_array as $value) {
+                                                      if ($value == $yourRating) { //if the province==the user's setting, make it default
+                                                        echo '<option value="'.$value.'" selected="selected">'.$value.'</option>';
+                                                      } else { //else, echo it as regular
+                                                        echo '<option value="'.$value.'">'.$value.'</option>';
+                                                      }
+                                                  }
+                                                }else{
+                                                  echo '<option value="all" selected="selected">Your Rating</option>
+                                                         <option value="1">1</option>
+                                                         <option value="2">2</option>
+                                                         <option value="3">3</option>
+                                                         <option value="4">4</option>
+                                                         <option value="5">5</option>
+                                                         <option value="6">6</option>
+                                                         <option value="7">7</option>
+                                                         <option value="8">8</option>
+                                                         <option value="9">9</option>
+                                                         <option value="10">10</option>';
+                                                }
+                                                echo'</select>
                                                 </p>
                                                 <br/>
-                                                <div class="rating_desc">
-                                                    <p>Add to Watchlist :</p>
-                                                </div>
-                                                <p><input type="checkbox" name="watchlist" id="watchlistAdd" value="Add to WatchList"></p>
+                                                <div class="rating_desc">';
+                                                if ($checkWatchList == 1){
+                                                  echo "<p>Remove from Watchlist :</p>";
+                                                }
+                                                else {
+                                                  echo "<p>Add to Watchlist :</p>";
+                                                }
+                                                echo '</div>
+                                                <p><input type="checkbox" name="watchlist" id="watchlistAdd" value="Add to WatchList"';
+                                                if ($checkWatchList == 1) echo "checked='checked'";
+                                                echo '></p>
                                             </form>
                                             <div class="clearfix"></div>
                                         </div>';
@@ -138,7 +163,7 @@
                                         echo "<p class='movie_option'><strong>Release Date (Y-M-D): </strong>".$row2['release_date']."</p>";
                                         echo "<p class='movie_option'><strong>Year of Release: </strong>".$row2['year_of_release']."</p>";
                                         echo "<p class='movie_option'><strong>Average Critics Rating: </strong>".$row2['avg_critics_rating']."</p>";
-                                        echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating;
+                                        if(isset($username) and $adminLogin == 'n'){  echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating; }
                                         echo "<p class='movie_option'><strong>Age Restriction: </strong>".$row2['age_restriction']."</p>";
                                     }
                                     ?>

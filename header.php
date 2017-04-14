@@ -65,7 +65,7 @@ if(isset($username) and $adminLogin == 'y'){
         <li><a href="adminhome.php">Admin Home</a></li>
         <li><a href="addmovie.php">Add Movies</a></li>
         <li><a href="deletemovie.php">Add/Delete Movie</a></li>
-        <li><a href="updatemovie.php">Update Movie</a></li>
+        <li><a href="updatemovies.php">Update Movie</a></li>
       </ul>
     </li>
     ';
