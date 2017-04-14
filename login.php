@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Best Movie rating</title>
+	<title>movieDB - Login</title>
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Movie_store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,

@@ -31,8 +31,9 @@ $total_pages = ceil($total_records / $limit);
 ?>
 <html>
 <head>
-	<title>Best Movie rating</title>
+	<title>Admin - Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Movie_store" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
