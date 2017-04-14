@@ -66,7 +66,7 @@ $total_pages = ceil($total_records / $limit);
 					</div>
 					<div class="content">
 						<div class="box_1">
-						 <h1 class="m_2">Delete Movies(Soft Delete)</h1>
+						 <h1 class="m_2">Add/Delete Movies</h1>
 						 <div class="clearfix"> </div>
 						</div>
 							<div id="page-content" class="well">
@@ -102,9 +102,10 @@ $total_pages = ceil($total_records / $limit);
                                 $isdeleted2 = 'n';
                                 $submitValue = 'Add Movie';
                               }
-                              echo '<form class="deletemovieform" action="db/softdeletemovie.php" method="post">';
-                              echo '<br /><input type="radio" name="isdeleted'.$title.'" value='.$isdeleted1.' checked="checked"/> '.$deletedVar1.'<br />';
-                              echo '<br /><input type="radio" name="isdeleted'.$title.'" value='.$isdeleted2.' /> '.$deletedVar2.'<br />';
+                              echo '<form class="deletemovieform'.$id.'" action="db/changeMovieStatus.php" method="post">';
+															echo '<input type="hidden" name="movie_id" value="'.$id.'"/>';
+                              echo '<br /><input type="radio" name="'.$id.'" value='.$isdeleted1.' checked="checked"/> '.$deletedVar1.'<br />';
+                              echo '<br /><input type="radio" name="'.$id.'" value='.$isdeleted2.' /> '.$deletedVar2.'<br />';
                               echo '<input class="acount-btn" type="submit" value="'.$submitValue.'" />
                                    </form></td>';
                             }
@@ -117,7 +118,7 @@ $total_pages = ceil($total_records / $limit);
 								<?php
 									$pagLink = "<div class='pagination' align='justify'>";
 									for ($i=1; $i<=$total_pages; $i++) {
-										 $pagLink .= "<a href='deletemovie.php?page=".$i."'>".$i."</a>";
+										 $pagLink .= "<a href='/deletemovie.php?page=".$i."'>".$i."</a>";
 									};
 									echo $pagLink."</div>";
 								?>
