@@ -11,16 +11,16 @@ if (isset($_GET["page"])) {
 	 $page=1;
  };
 $start_from = ($page-1) * $limit;
-if(isset($_SESSION["admin_movie"]) && isset($_SESSION["admin_paging_sql"])){
-  $qmovie = $_SESSION["admin_movie"];
-  $pagingsql = $_SESSION["admin_paging_sql"];
+if(isset($_SESSION["admin_home_movie"]) && isset($_SESSION["admin_home_paging_sql"])){
+  $qmovie = $_SESSION["admin_home_movie"];
+  $pagingsql = $_SESSION["admin_home_paging_sql"];
   $querymovie =  $qmovie."$start_from, $limit;";
 }else{
-	$qmovie = "select movie_id, movies.movie_title, img_location from movies LIMIT ";
+	$qmovie = "select movie_id, movies.movie_title, img_location from movies where is_deleted='n' LIMIT ";
 	$querymovie =  $qmovie."$start_from, $limit;";
-	$pagingsql = "select COUNT(movie_id) FROM movies;";
-	$_SESSION["admin_movie"]=$qmovie;
-	$_SESSION["admin_paging_sql"]=$pagingsql;
+	$pagingsql = "select COUNT(movie_id) FROM movies where is_deleted='n';";
+	$_SESSION["admin_home_movie"]=$qmovie;
+	$_SESSION["admin_home_paging_sql"]=$pagingsql;
 }
 $movieresult = mysqli_query($dbcon, $querymovie);
 $paging_result = mysqli_query($dbcon,$pagingsql);
