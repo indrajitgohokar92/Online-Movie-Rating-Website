@@ -41,9 +41,6 @@ border-top-right-radius: 3px;
 -moz-border-top-right-radius: 3px;
 -o-border-top-right-radius: 3px;
 }
-.logo{
-	margin-top: 4px;
-}
 .center {
 	text-align: center;
 }
@@ -1606,10 +1603,6 @@ ul.header_right_box {
 ul.header_right_box li {
 	display: inline-block;
 	float: none;
-}
-.logo {
-	margin:0 0 10px;
-	text-align: center;
 }
 .header_top {
 	padding: 1em 1em 0.8em;
