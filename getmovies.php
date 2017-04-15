@@ -116,8 +116,8 @@ $total_pages = ceil($total_records / $limit);
 														$imgloc = $row["img_location"];
 														$id= $row["movie_id"];
 														$title=$row["movie_title"];
-														$loc="images/movie_posters/".$imgloc;
-														$link="single.php?id=".$id;
+														$loc="/images/movie_posters/".$imgloc;
+														$link="/single.php?id=".$id;
 														echo "<td><a href=".$link."><img src=".$loc." height='300' width='220' /></a>";
 														echo "<br /><h3><a href=".$link.">".$title."</a></h3></td>";
 													}

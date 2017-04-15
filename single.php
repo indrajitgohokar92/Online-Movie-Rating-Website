@@ -3,10 +3,12 @@
 //Step1
     session_start();
     $username = $_SESSION['username'];
+    $userId = intval($_SESSION['user_id']);
     $adminLogin = $_SESSION['isAdmin'];
+    $mov_id = $_GET['id'];
 
     $dbcon = new mysqli("localhost", "root", "root", "moviedb");
-    $mov_id = $_GET['id'];
+
     $queryheading = "select avg_audience_rating,img_location from movies where movie_id='".$mov_id."';";
     $querymovie = "select movie_title,release_date,year_of_release,avg_critics_rating, country,age_restriction from movies where movie_id='".$mov_id."';";
     $querysynopsis = "select synopsis from movies where movie_id='".$mov_id."';";
@@ -14,20 +16,28 @@
     $queryproducers = "select producer_name from producers,movies_producers where movies_producers.producer_id = producers.producer_id and movies_producers.movie_id='".$mov_id."';";
     $querydirectors = "select director_name from directors,movies_directors where movies_directors.director_id= directors.director_id and movies_directors.movie_id='".$mov_id."';";
     $querycategory = "select category_name from categories,movies_categories where movies_categories.category_id = categories.category_id and movies_categories.movie_id='".$mov_id."';";
+    $queryComments = "select user_details.fname,comments.comment,comments.comment_timestamp from comments,user_details
+                      where user_details.user_id=comments.user_id and comments.movie_id='".$mov_id."';";
 
-    $queryUserId = "select user_id from users where username = '".$username."'";
-    $resultUserId = mysqli_query($dbcon, $queryUserId) or die("Error getting user id from db". mysqli_error($dbcon));
-
-    while($row5 = mysqli_fetch_assoc($resultUserId)){
-        $userId = intval($row5['user_id']);
-    }
     // var_dump($userId);
     if (isset($userId)){
         $queryRating = "select rating from ratings where user_id = ".$userId." and movie_id =".$mov_id.";";
         $queryWatchlist = "select * from users_watchlists where user_id = ".$userId." and movie_id =".$mov_id.";";
     } else {
         $queryRating = "select rating from ratings where movie_id =".$mov_id.";";
+        $queryWatchlist = "select rating from ratings where movie_id =".$mov_id.";";
     }
+
+    $resultheading = mysqli_query($dbcon,$queryheading) or die("Error getting heading from db". mysqli_error($dbcon));
+    $resultmovie = mysqli_query($dbcon,$querymovie) or die("Error getting movie from db". mysqli_error($dbcon));
+    $resultactors = mysqli_query($dbcon,$queryactors) or die("Error getting actors from db". mysqli_error($dbcon));
+    $resultproducers = mysqli_query($dbcon,$queryproducers) or die("Error getting producers from db". mysqli_error($dbcon));
+    $resultdirectors = mysqli_query($dbcon,$querydirectors) or die("Error getting directors from db". mysqli_error($dbcon));
+    $resultcategory = mysqli_query($dbcon,$querycategory) or die("Error getting category from db". mysqli_error($dbcon));
+    $resultsynopsis = mysqli_query($dbcon,$querysynopsis) or die("Error getting synopsis from db". mysqli_error($dbcon));
+    $resultComments = mysqli_query($dbcon,$queryComments) or die("Error getting comments from db". mysqli_error($dbcon));
+
+    $numOfComments = mysqli_num_rows($resultComments);
     // echo $queryRating;
     $resultRating = mysqli_query($dbcon, $queryRating) or die("Error getting rating from db". mysqli_error($dbcon));
     $resultWatchlist = mysqli_query($dbcon, $queryWatchlist) or die("Error getting watchlist from db". mysqli_error($dbcon));
@@ -45,13 +55,7 @@
         $yourRating = "(Login to set)";
     }
 
-    $resultheading = mysqli_query($dbcon,$queryheading);
-    $resultmovie = mysqli_query($dbcon,$querymovie);
-    $resultactors = mysqli_query($dbcon,$queryactors);
-    $resultproducers = mysqli_query($dbcon,$queryproducers);
-    $resultdirectors = mysqli_query($dbcon,$querydirectors);
-    $resultcategory = mysqli_query($dbcon,$querycategory);
-    $resultsynopsis = mysqli_query($dbcon,$querysynopsis);
+
 ?>
 <html>
     <head>
@@ -106,7 +110,7 @@
                                 </script>
                                 <?php
                                     // display only if user is not an admin
-                                    if(isset($username) and $adminLogin == 'n'){
+                                    if(isset($userId) and $adminLogin == 'n'){
                                         $rating_array = array(1, 2, 3 , 4, 5, 6, 7, 8, 9, 10);
                                         echo '<div class="movie_rate">
                                             <form id="user_ratings" action="" class="sky-form">
@@ -164,7 +168,7 @@
                                         echo "<p class='movie_option'><strong>Release Date (Y-M-D): </strong>".$row2['release_date']."</p>";
                                         echo "<p class='movie_option'><strong>Year of Release: </strong>".$row2['year_of_release']."</p>";
                                         echo "<p class='movie_option'><strong>Average Critics Rating: </strong>".$row2['avg_critics_rating']."</p>";
-                                        if(isset($username) and $adminLogin == 'n'){  echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating; }
+                                        if(isset($userId) and $adminLogin == 'n'){  echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating; }
                                         echo "<p class='movie_option'><strong>Age Restriction: </strong>".$row2['age_restriction']."</p>";
                                     }
                                     ?>
@@ -175,7 +179,7 @@
                                             $actors[] = $row3['actor_name'];
                                         }
                                         echo "".implode(', ', $actors)."";
-                                        ?>
+                                    ?>
                                 </p>
                                 <p class="movie_option"><strong>Directors: </strong>
                                     <?php
@@ -212,76 +216,54 @@
                                     }
                                     ?>
                             </p>
-                            <form method="post" action="contact-post.html">
-                                <div class="to">
-                                    <input type="text" class="text" value="<?php if (isset($_SESSION["firstname"])) {
-                                        echo $_SESSION['firstname'];
-                                        } else {
-                                        echo 'Name';
-                                        } ?>" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-                                    <input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
-                                </div>
-                                <div class="text">
-                                    <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
-                                </div>
-                                <div class="form-submit1">
-                                    <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
-                                </div>
-                                <div class="clearfix"></div>
-                            </form>
+                            <?php
+                              if (isset($userId) and $adminLogin == 'n') {
+                                echo '<form method="post" action="db/addcomment.php">
+                                        <input type="hidden" name="user_id" id="user_id" value="'.$userId.'"/>
+                                        <input type="hidden" name="movie_id" id="movie_id" value="'.$mov_id.'"/>
+                                        <strong>Name: </strong><br/>
+                                        <div class="to">
+                                          <input type="text" class="text" value="';
+                                          echo $_SESSION['firstname'];
+                                          echo '" readonly>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <strong>Comment: </strong><br/>
+                                        <div class="text">
+                                            <textarea  name="comment" id="comment" value="Message:"></textarea>
+                                        </div>
+                                        <div class="form-submit1">
+                                            <input name="submit" type="submit" id="submit" value="Add Comment"><br>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                      </form>';
+                              }
+                             ?>
                             <div class="single">
-                                <h1>10 Comments</h1>
-                                <ul class="single_list">
-                                    <li>
-                                        <div class="preview"><a href="#"><img src="images/2.jpg" class="img-responsive" alt=""></a></div>
-                                        <div class="data">
-                                            <div class="title">Movie  /  2 hours ago  /  <a href="#">reply</a></div>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="preview"><a href="#"><img src="images/3.jpg" class="img-responsive" alt=""></a></div>
-                                        <div class="data">
-                                            <div class="title">Wernay  /  2 hours ago  /  <a href="#">reply</a></div>
-                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent </p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="preview"><a href="#"><img src="images/4.jpg" class="img-responsive" alt=""></a></div>
-                                        <div class="data">
-                                            <div class="title">mr.dev  /  2 hours ago  /  <a href="#">reply</a></div>
-                                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram,</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li class="middle">
-                                        <div class="preview"><a href="#"><img src="images/5.jpg" class="img-responsive" alt=""></a></div>
-                                        <div class="data-middle">
-                                            <div class="title">Wernay  /  2 hours ago  /  <a href="#">reply</a></div>
-                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li class="last-comment">
-                                        <div class="preview"><a href="#"><img src="images/6.jpg" class="img-responsive" alt=""></a></div>
-                                        <div class="data-last">
-                                            <div class="title">mr.dev  /  2 hours ago  /  <a href="#">reply</a></div>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit </p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="preview"><a href="#"><img src="images/7.jpg" class="img-responsive" alt=""></a></div>
-                                        <div class="data">
-                                            <div class="title">denpro  /  2 hours ago  /  <a href="#">reply</a></div>
-                                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </ul>
-                            </div>
+                              <?php
+                              if(($numOfComments)>1){
+                                  echo  '<h1>'.$numOfComments.' Comments</h1>';
+                                  echo  '<ul class="single_list">';
+                                        while ($row = mysqli_fetch_array($resultComments)) {
+                                              $movie_user = $row['fname'];
+                                              $movie_user_comment = $row['comment'];
+                                              $timestamp1 = $row['comment_timestamp'];
+                                              $timestamp = date("F j, Y, g:i a",strtotime($timestamp1));
+                                              echo '<li>
+                                                      <div class="preview"></div>
+                                                      <div class="data">
+                                                        <div class="title">'.$movie_user.' commented at '.$timestamp.'</div>
+                                                          <p>'.$movie_user_comment.'</p>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                   </li>';
+                                        }
+                                  echo '</ul>';
+                              } else{
+                                 echo  '<h1>No Comments!</h1>';
+                              }
+                              ?>
+                        </div>
                         </div>
                         <div class="col-md-3">
                             <p><strong>Featured Movies</strong></p>

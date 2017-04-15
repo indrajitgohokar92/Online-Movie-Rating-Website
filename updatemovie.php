@@ -100,7 +100,7 @@ while($row = mysqli_fetch_array($img_result)){
               <div class="register">
                   <form id="movieform" action="db/changemovie.php" method="post" name="movieform"  enctype="multipart/form-data">
                       <div class="register-top-grid">
-                          <input type="hidden" name="movie_id" id="movie_id" value=<?php echo htmlentities($mov_id); ?>/>
+                          <input type="hidden" name="movie_id" id="movie_id" value="<?php echo htmlentities($mov_id); ?>"/>
                           <div>
                               <span>Movie Title<label>*</label></span>
                               <input type="text" name="movietitle" id="movietitle" value="<?php echo htmlentities($movietitle); ?>">
