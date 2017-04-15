@@ -1,29 +1,13 @@
 <?php
     session_start();
-    // $dbcon = new mysqli("localhost", "root", "root", "moviedb");
     $username = $_SESSION['username'];
     $adminLogin = $_SESSION['isAdmin'];
-    // $usertypequery = "select is_admin from users where username=".$username.";";
-    // $usertyperesult = mysqli_query($dbcon,$usertypequery);
-    // while($row1 = mysqli_fetch_array($usertyperesult))
-    // {
-    //   echo $row1['is_admin'];
-    // }
 ?>
-
-<!-- <script type="text/javascript">
-$(document).ready(function() {
-    $('dropdown-toggle').dropdown();
-});
-</script> -->
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
-<!-- <script type="text/javascript" src="js/bootstrap-datepicker.js"></script> -->
 <div class="col-sm-2 logo"><a href="index.php"><img src="images/logo.png" alt=""/></a></div>
 <div class="col-sm-5 ">
     <div class="search">
         <form id="searchForm" method="post" action="getmovies.php">
-            <input type="text" name="searchterm" value="Search Movies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+            <input type="text" name="searchterm" id="searchterm" value="Search Movies..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
             <select name="moviegenre" id="genre" class="quicksearch_dropdown navbarSprite">
             	<option value="all" selected="selected">All</option>
                 <option value="action">Action</option>
