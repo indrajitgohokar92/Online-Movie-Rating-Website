@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <?php
+
 $dbcon = new mysqli("localhost", "root", "root", "moviedb");
 $queryactors = "select actor_id,actor_name from actors;";
 $querydirectors = "select director_id,director_name from directors;";
@@ -87,7 +88,7 @@ $row = mysqli_fetch_row($paging_result);
                           </div>
                           <div>
                               <span>Actor<label>*</label></span>
-                              <select name="movie_actor">
+                              <select name="movie_actor" id="movie_actor">
                                 <option value="-1" selected>Select</option>
                                 <?php
         													while ($row = mysqli_fetch_array($actor_result)) {
@@ -99,7 +100,7 @@ $row = mysqli_fetch_row($paging_result);
                           </div>
                           <div>
                               <span>Director<label>*</label></span>
-                              <select name="movie_director">
+                              <select name="movie_director" id="movie_director">
                                 <option value="-1" selected>Select</option>
                                 <?php
         													while ($row = mysqli_fetch_array($director_result)) {
@@ -110,7 +111,7 @@ $row = mysqli_fetch_row($paging_result);
                           </div>
                           <div>
                               <span>Producer<label>*</label></span>
-                              <select name="movie_producer">
+                              <select name="movie_producer" id="movie_producer">
                                 <option value="-1" selected>Select</option>
                                 <?php
         													while ($row = mysqli_fetch_array($producer_result)) {
@@ -121,8 +122,8 @@ $row = mysqli_fetch_row($paging_result);
                           </div>
                           <div>
                               <span>Category<label>*</label></span>
-                              <select name="movie_category">
-                                <option value="Select" selected>Select</option>
+                              <select name="movie_category" id="movie_category">
+                                <option value="-1" selected>Select</option>
                                 <?php
         													while ($row = mysqli_fetch_array($category_result)) {
                                   echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
@@ -138,7 +139,14 @@ $row = mysqli_fetch_row($paging_result);
                       </div>
                       <div class="clearfix"> </div>
                       <input class="acount-btn" type="submit" value="Add Movie">
-                      <i id="movieformstatus"></i>
+                      <i id="movieformstatus">
+												<?php if (isset($_SESSION['Add_Movie_Error']))
+												{
+														echo $_SESSION['Add_Movie_Error'];
+														unset($_SESSION['Add_Movie_Error']);
+												}
+												?>
+											</i>
                       <div class="clearfix"> </div>
                   </form>
               </div>

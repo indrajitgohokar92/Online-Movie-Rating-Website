@@ -154,20 +154,26 @@ $(document).ready(function() {
 	$('#registerform').on('submit', function(e){
 
 		if($('#fname').val()=="" || $('#lname').val()=="" || $('#email').val()==""
-			&& $('#dob').val()=="" || $('#username').val()=="" || $('#password').val()==""){
+			|| $('#username').val()=="" || $('#password').val()==""){
 				$("#formstatus").text("Enter All the Fields!").show().fadeOut( 3000 );
 				return false;
+		}
+		if($('#dob').val()==""){
+			$("#formstatus").text("Enter the date of birth!").show().fadeOut( 3000 );
+			return false;
 		}
 		var fname=$('#fnamestatus').prop('outerHTML');
 		var lname=$('#lnamestatus').prop('outerHTML');
 		var email=$('#emailstatus').prop('outerHTML');
 		var username=$('#usernamestatus').prop('outerHTML');
 		var password=$('#passwordstatus').prop('outerHTML');
+		var dob=$('#dobstatus').prop('outerHTML');
 		if ((fname.indexOf("Success!") < 0) ||
 				(lname.indexOf("Success!") < 0) ||
 				(email.indexOf("Success!") < 0) ||
 				(username.indexOf("Success!") < 0) ||
-				(password.indexOf("Success!") < 0)
+				(password.indexOf("Success!") < 0) ||
+				(dob.indexOf("Success!") < 0)
 		){
 			$("#formstatus").text("Errors in the fields!").show().fadeOut( 3000 );
 			return false;

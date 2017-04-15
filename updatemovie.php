@@ -69,7 +69,7 @@ while($row = mysqli_fetch_array($img_result)){
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="js/validateMovie.js"></script>
+  <script type="text/javascript" src="js/validateUpdateMovie.js"></script>
 	<script type="application/x-javascript">
 		 addEventListener("load", function() {
 		 	setTimeout(hideURLbar, 0);
@@ -141,7 +141,14 @@ while($row = mysqli_fetch_array($img_result)){
                       </div>
                       <div class="clearfix"> </div>
                       <input class="acount-btn" type="submit" value="Update Movie">
-                      <i id="movieformstatus"></i>
+                      <i id="movieformstatus">
+                        <?php if (isset($_SESSION['Update_Movie_Error']))
+												{
+														echo $_SESSION['Update_Movie_Error'];
+														unset($_SESSION['Update_Movie_Error']);
+												}
+												?>
+                      </i>
                       <div class="clearfix"> </div>
                   </form>
               </div>

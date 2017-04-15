@@ -67,7 +67,14 @@
                             </div>
                             <div class="clearfix"> </div>
                             <input class="acount-btn" type="submit" value="Register">
-                            <i id="formstatus"></i>
+                            <i id="formstatus">
+                              <?php if (isset($_SESSION['Register_Error']))
+                              {
+                                  echo $_SESSION['Register_Error'];
+                                  unset($_SESSION['Register_Error']);
+                              }
+                              ?>
+                            </i>
                             <div class="clearfix"> </div>
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 session_start();
-$search_term = $_REQUEST['searchterm'];
+$search_term = trim($_REQUEST['searchterm']);
 $movie_category = $_REQUEST['moviegenre'];
 
 $movie_category = strtolower($movie_category);
@@ -16,13 +16,13 @@ if (isset($_GET["page"])) {
  };
 $start_from = ($page-1) * $limit;
 if(isset($search_term) && isset($movie_category)){
-	if(($search_term == "Search Movies...") && ($movie_category == "all")){
+	if((($search_term == "Search Movies...")||($search_term == "")) && ($movie_category == "all")){
 		$qmovie = "select movie_id, movies.movie_title, img_location from movies where is_deleted='n' LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
 		$pagingsql = "select COUNT(movie_id) FROM movies where is_deleted='n';";
 		$_SESSION["q_movie"]=$qmovie;
 		$_SESSION["paging_sql"]=$pagingsql;
-	} elseif(($search_term == "Search Movies...") && !($movie_category == "all")) {
+	} elseif((($search_term == "Search Movies...")||($search_term == "")) && !($movie_category == "all")) {
 		$qmovie = "select movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
 						and categories.category_name='".$movie_category."' and is_deleted='n' LIMIT ";

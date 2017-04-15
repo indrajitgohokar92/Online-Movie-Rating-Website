@@ -1,5 +1,5 @@
 <?php
-  define ('SITE_ROOT', realpath("C:/MAMP/htdocs"));
+  session_start();
   ini_set('display_errors',1);
   error_reporting(E_ALL);
 	$movietitle = $_POST["movietitle"];
@@ -8,7 +8,11 @@
 	$releaseyear = $_POST["releaseyear"];
 	$country = $_POST["country"];
 	$agerestriction = $_POST["agerestriction"];
-  $synopsis = $_POST["synopsis"];
+
+  $synopsis_temp1 = str_replace('"', "", $_POST["synopsis"]);
+  $synopsis_temp2 = str_replace("'", "", $synopsis_temp1);
+  $synopsis = $synopsis_temp2;
+  
   $audiencerating = $_POST["audiencerating"];
   $movie_actor = $_POST["movie_actor"];
   $movie_director = $_POST["movie_director"];
@@ -25,8 +29,6 @@
 
 
     //movie poster part
-
-    echo $target_dir;
     $target_dir = "../images/movie_posters/";
     $target_file = $target_dir . basename($_FILES["movie_image"]["name"]);
     $uploadOk = 1;
@@ -37,37 +39,48 @@
     echo "imageFileType: ".$imageFileType."\n";
     // Check if image file is a actual image or fake image
     if($check !== false) {
-        //echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         echo "File is not an image.";
         $uploadOk = 0;
+        $movie_error= 'File is not an image!';
     }
 
     // Check if file already exists
     if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
+        unlink($target_file);
     }
 
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "jpeg") {
-        echo "Sorry, only JPG, JPEG files are allowed.";
         $uploadOk = 0;
+        $movie_error = 'Sorry, only JPG, JPEG files are allowed!';
     }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+      $_SESSION['Add_Movie_Error'] = $movie_error;
+      $port = $_SERVER['SERVER_PORT'];
+      $locationUrl = "http://localhost:".$port."/addmovie.php";
+      header("Location:".$locationUrl); /* Redirect to login.php */
+      exit();
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["movie_image"]["tmp_name"], $target_file)) {
             echo "The file ". basename( $_FILES["movie_image"]["name"]). " has been uploaded.";
 
-            echo "synopsis: ---".$synopsis."-----";
+
             $insertMovie_query = "insert into movies(movie_title, release_date, avg_critics_rating, year_of_release, country, age_restriction, synopsis, avg_audience_rating, is_deleted, img_location)
             values('".$movietitle."','".$releasedate."','".$criticsrating."','".$releaseyear."','".$country."','".$agerestriction."',
             '".$synopsis."','".$audiencerating."','n','".$movie_image."')";
-            $resultMovie = mysqli_query($dbcon, $insertMovie_query) or die("Error inserting movie into db".mysqli_error($dbcon));
+            $resultMovie = mysqli_query($dbcon, $insertMovie_query);
+            if(!$resultMovie){
+              $movie_error = 'Synopsis cannot contain special characters!';
+              $_SESSION['Add_Movie_Error'] = $movie_error;
+              $port = $_SERVER['SERVER_PORT'];
+              $locationUrl = "http://localhost:".$port."/addmovie.php";
+              header("Location:".$locationUrl); /* Redirect to login.php */
+              exit();
+            }
 
             //get inserted movie_id
             $selectMovie_query = "select movie_id from movies where movie_title = '".$movietitle."'";
@@ -129,16 +142,24 @@
             header("Location:".$locationUrl); /* Redirect to login.php */
             exit();
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            // echo "Sorry, there was an error uploading your file.";
+            $movie_error = 'Sorry, your file was not uploaded!';
+            $_SESSION['Add_Movie_Error'] = $movie_error;
+            $port = $_SERVER['SERVER_PORT'];
+            $locationUrl = "http://localhost:".$port."/addmovie.php";
+            header("Location:".$locationUrl); /* Redirect to login.php */
+            exit();
         }
     }
 
 	}
   else {
-    echo "Variables not set";
+    $movie_error = 'Variables not set!';
+    $_SESSION['Add_Movie_Error'] = $movie_error;
     $port = $_SERVER['SERVER_PORT'];
-    $locationUrl = "http://localhost:".$port."/index.php";
+    $locationUrl = "http://localhost:".$port."/addmovie.php";
     header("Location:".$locationUrl); /* Redirect to login.php */
+    exit();
   }
 
 

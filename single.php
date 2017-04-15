@@ -71,6 +71,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/ratingsNwatchlist.js"></script>
+        	<script type="text/javascript" src="js/validatecomment.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -218,7 +219,7 @@
                             </p>
                             <?php
                               if (isset($userId) and $adminLogin == 'n') {
-                                echo '<form method="post" action="db/addcomment.php">
+                                echo '<form method="post" action="db/addcomment.php" id="commentform">
                                         <input type="hidden" name="user_id" id="user_id" value="'.$userId.'"/>
                                         <input type="hidden" name="movie_id" id="movie_id" value="'.$mov_id.'"/>
                                         <strong>Name: </strong><br/>
@@ -230,10 +231,11 @@
                                         <div class="clearfix"></div>
                                         <strong>Comment: </strong><br/>
                                         <div class="text">
-                                            <textarea  name="comment" id="comment" value="Message:"></textarea>
+                                            <textarea  name="comment" id="comment" value=""></textarea>
                                         </div>
                                         <div class="form-submit1">
-                                            <input name="submit" type="submit" id="submit" value="Add Comment"><br>
+                                            <input name="submit" type="submit" id="submit" value="Add Comment">
+                                            <i id="commentformstatus"></i>
                                         </div>
                                         <div class="clearfix"></div>
                                       </form>';

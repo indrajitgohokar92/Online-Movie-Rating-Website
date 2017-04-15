@@ -88,50 +88,6 @@ $(document).ready(function() {
 			}
 	);
 
-	var actorValidator = fieldValidator(
-			$('#movie_actor'),"Please select the actor",function(input) {
-
-				if(!(input==-1)){
-					return "Success"
-				}else{
-						return "Select an actor!"
-				}
-			}
-	);
-
-	var directorValidator = fieldValidator(
-			$('#movie_director'),"Please select the director",function(input) {
-
-				if(!(input==-1)){
-					return "Success"
-				}else{
-						return "Select a director!"
-				}
-			}
-	);
-
-	var producerValidator = fieldValidator(
-			$('#movie_producer'),"Please select the producer",function(input) {
-
-				if(!(input==-1)){
-					return "Success"
-				}else{
-						return "Select a producer!"
-				}
-			}
-	);
-
-	var categoryValidator = fieldValidator(
-			$('#movie_category'),"Please select the category",function(input) {
-
-				if(!(input==-1)){
-					return "Success"
-				}else{
-						return "Select a category!"
-				}
-			}
-	);
-
 	var moviedateValidator = fieldValidator(
 			$('#releasedate'),"Please select the Release date",function(input) {
 
@@ -152,17 +108,9 @@ $(document).ready(function() {
   $('#audiencerating').focus(audienceratingValidator);
 	$('#agerestriction').focus(agerestrictionValidator);
 	$('#synopsis').focus(synopsisValidator);
-	$('#movie_actor').focus(actorValidator);
-	$('#movie_director').focus(directorValidator);
-	$('#movie_producer').focus(producerValidator);
-	$('#movie_category').focus(categoryValidator);
 	$('#releasedate').focus(moviedateValidator);
 
 	$('#releasedate').blur(moviedateValidator);
-	$('#movie_actor').blur(actorValidator);
-	$('#movie_director').blur(directorValidator);
-	$('#movie_producer').blur(producerValidator);
-	$('#movie_category').blur(categoryValidator);
 	$('#movietitle').blur(movietitleValidator);
 	$('#country').blur(countryValidator);
   $('#criticsrating').blur(criticsratingValidator);
@@ -178,8 +126,6 @@ $(document).ready(function() {
 
 		if($('#movietitle').val()=="" || $('#country').val()=="" || $('#agerestriction').val()==""
 			|| $('#synopsis').val()=="" || $('#criticsrating').val()=="" || $('#audiencerating').val()==""
-			|| $('#movie_actor option:selected').val()==-1 || $('#movie_director option:selected').val() == -1
-		  || $('#movie_producer option:selected').val() == -1 || $('#movie_category option:selected').val() == -1
 			|| $('#releaseyear').val()=="")
     {
 				$("#movieformstatus").text("Enter All the Fields!").show().fadeOut( 3000 );
@@ -187,7 +133,8 @@ $(document).ready(function() {
 		}
 		if($('#releasedate').val()==""){
 			$("#movieformstatus").text("Enter the release date!").show().fadeOut( 3000 );
-			return false;		}
+			return false;
+		}
 		if($('#movie_image').val()==""){
 			$("#movieformstatus").text("Please choose a movie poster!").show().fadeOut( 3000 );
 			return false;
@@ -200,16 +147,10 @@ $(document).ready(function() {
     var criticsrating=$('#criticsrating').prop('outerHTML');
     var releaseyear=$('#releaseyear').prop('outerHTML');
     var audiencerating=$('#audiencerating').prop('outerHTML');
-		var movieActor=$('movie_actor').prop('outerHTML');
-		var movieDirector=$('#movie_director').prop('outerHTML');
-		var movieProducer=$('#movie_producer').prop('outerHTML');
-		var movieCategory=$('#movie_category').prop('outerHTML');
 		if ((movietitle.indexOf("Success!") < 0) || (country.indexOf("Success!") < 0) ||
 				 (agerestriction.indexOf("Success!") < 0) || (synopsis.indexOf("Success!") < 0) ||
      		 (criticsrating.indexOf("Success!") < 0) || (releaseyear.indexOf("Success!") < 0) ||
-     		 (audiencerating.indexOf("Success!") < 0) || (movieActor.indexOf("Success!") < 0) ||
-				 (movieDirector.indexOf("Success!") < 0) || (movieProducer.indexOf("Success!") < 0) ||
-				 (movieCategory.indexOf("Success!") < 0) || (releaseDate.indexOf("Success!") < 0)
+     		 (audiencerating.indexOf("Success!") < 0) || (releaseDate.indexOf("Success!") < 0)
 		){
 			$("#movieformstatus").text("Errors in the fields!").show().fadeOut( 3000 );
 			return false;
