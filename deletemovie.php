@@ -93,13 +93,13 @@ $total_pages = ceil($total_records / $limit);
                               $isdeleted1 = $row['is_deleted'];
                               if($isdeleted1 == 'n'){
                                 $deletedVar1 = 'Available';
-                                $deletedVar2 = 'Deleted';
+                                $deletedVar2 = 'Delete';
                                 $isdeleted2 = 'y';
                                 $submitValue = 'Delete Movie';
                               }
                               else{
                                 $deletedVar1 = 'Deleted';
-                                $deletedVar2 = 'Available';
+                                $deletedVar2 = 'Add';
                                 $isdeleted2 = 'n';
                                 $submitValue = 'Add Movie';
                               }
