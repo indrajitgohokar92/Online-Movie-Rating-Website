@@ -241,8 +241,9 @@
                              ?>
                             <div class="single">
                               <?php
-                              if(($numOfComments)>1){
-                                  echo  '<h1>'.$numOfComments.' Comments</h1>';
+                              if(!($numOfComments)==0){
+                                  if($numOfComments==1){ echo  '<h1>'.$numOfComments.' Comment</h1>';}
+                                  else { echo  '<h1>'.$numOfComments.' Comments</h1>';}
                                   echo  '<ul class="single_list">';
                                         while ($row = mysqli_fetch_array($resultComments)) {
                                               $movie_user = $row['fname'];

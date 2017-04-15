@@ -133,7 +133,7 @@ $(document).ready(function() {
      		 (releaseyear.indexOf("Success!") < 0) ||
      		 (audiencerating.indexOf("Success!") < 0)
 		){
-			$("#movieformstatus").text(movietitle.indexOf("Success!") ).show().fadeOut( 3000 );
+			$("#movieformstatus").text("Errors in the fields!").show().fadeOut( 3000 );
 			return false;
 		}else{
 			return true;

@@ -87,6 +87,7 @@
 
             //insert actor for that movie_id
             $insertMovieActor_query = "insert into movies_actors(movie_id,actor_id) values ('".$movie_id."','".$actor_id."')";
+            echo $insertMovieActor_query;
             $resultMovieActor = mysqli_query($dbcon, $insertMovieActor_query) or die("Error inserting actor id". mysqli_error($dbcon));
 
             //get director id
