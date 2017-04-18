@@ -17,7 +17,7 @@
     $querydirectors = "select director_name from directors,movies_directors where movies_directors.director_id= directors.director_id and movies_directors.movie_id='".$mov_id."';";
     $querycategory = "select category_name from categories,movies_categories where movies_categories.category_id = categories.category_id and movies_categories.movie_id='".$mov_id."';";
     $queryComments = "select user_details.fname,comments.comment,comments.comment_timestamp from comments,user_details
-                      where user_details.user_id=comments.user_id and comments.movie_id='".$mov_id."';";
+                      where user_details.user_id=comments.user_id and comments.movie_id='".$mov_id."' order by comments.comment_timestamp ;";
 
     // var_dump($userId);
     if (isset($userId)){
@@ -169,7 +169,8 @@
                                         echo "<p class='movie_option'><strong>Release Date (Y-M-D): </strong>".$row2['release_date']."</p>";
                                         echo "<p class='movie_option'><strong>Year of Release: </strong>".$row2['year_of_release']."</p>";
                                         echo "<p class='movie_option'><strong>Average Critics Rating: </strong>".$row2['avg_critics_rating']."</p>";
-                                        if(isset($userId) and $adminLogin == 'n'){  echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating; }
+                                        if(isset($userId) and isset($yourRating) and $adminLogin == 'n'){  echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating; }
+                                        else{echo "<p class='movie_option'><strong>Your Rating: </strong>"."No Rating"; }
                                         echo "<p class='movie_option'><strong>Age Restriction: </strong>".$row2['age_restriction']."</p>";
                                     }
                                     ?>

@@ -2,7 +2,7 @@
   $userId = intval($_POST["user_id"]);
   $movieId = intval($_POST["movie_id"]);
   $comment = $_POST["comment"];
-  $datetime = date("Y-m-d H:i:s");
+  $datetime = date("Y-m-d H:i:s",strtotime('-5 Hours'));
   echo $datetime;
   $dbcon = new mysqli("localhost", "root", "root", "moviedb");
   $insertComment_query = "insert into comments(movie_id, user_id, comment,comment_timestamp) values('".$movieId."','".$userId."','".$comment."','".$datetime."')";

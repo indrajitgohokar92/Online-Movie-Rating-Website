@@ -12,6 +12,7 @@
 
     $queryMovieId = "select movie_id from users_watchlists where user_id = ".$userId.";";
     $resultMovieIds = mysqli_query($dbcon, $queryMovieId) or die("Error getting movie ids from db". mysqli_error($dbcon));
+    $row_cnt = mysqli_num_rows($resultMovieIds);
 ?>
 <html>
     <head>
@@ -43,6 +44,7 @@
                                 <br>
                                 <ul>
                                     <?php
+                                      if($row_cnt>0){
                                         while($rowMovie = mysqli_fetch_assoc($resultMovieIds)){
                                             $movieId = $rowMovie['movie_id'];
                                             // echo $userId;
@@ -53,6 +55,9 @@
                                             $movieName = $oneMovie['movie_title'];
                                             echo '<h3><a href='.'"single.php?id='.$movieId.'"><li>'.$movieName.'</li></a></h3>';
                                         }
+                                      } else {
+                                        echo '<h4 class="m_2">No movies in your Watchlist!</h4>';
+                                      }
                                     ?>
                                 </ul>
                             </div>
