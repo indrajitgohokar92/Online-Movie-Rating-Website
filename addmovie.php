@@ -33,11 +33,8 @@ $row = mysqli_fetch_row($paging_result);
 		 }
 	</script>
 	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
-	<!-- <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- start plugins -->
-
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 </head>
 <body>

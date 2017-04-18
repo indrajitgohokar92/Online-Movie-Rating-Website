@@ -7,35 +7,32 @@
     <div class="gp-container">
         <div class="footer-widget footer-1">
             <div class="wpb_wrapper">
-                <img src="images/f_logo.png" alt="" />
+                <h3>MovieDB</h3>
             </div>
             <br>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a page.</p>
-            <p class="text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+            <p class="text">We store the Largest databse of movies. Find all the information regarding all your favorite movies here
+              including the cast, audience and the critics ratings.</p>
         </div>
         <div class="footer_box">
             <div class="col_1_of_3 span_1_of_3">
-                <h3>Categories</h3>
-                <ul class="first">
-                    <li><a href="#">Dance</a></li>
-                    <li><a href="#">History</a></li>
-                    <li><a href="#">Specials</a></li>
-                </ul>
-            </div>
-            <div class="col_1_of_3 span_1_of_3">
-                <h3>Information</h3>
-                <ul class="first">
-                    <li><a href="#">New products</a></li>
-                    <li><a href="#">top sellers</a></li>
-                    <li><a href="#">Specials</a></li>
-                </ul>
-            </div>
-            <div class="col_1_of_3 span_1_of_3">
                 <h3>Follow Us</h3>
                 <ul class="first">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Youtube</a></li>
+                    <li><a href="https://www.facebook.com/imdb/">Facebook</a></li>
+                    <li><a href="https://twitter.com/IMDb?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Twitter</a></li>
+                </ul>
+            </div>
+            <div class="col_1_of_3 span_1_of_3">
+                <h3>Latest Trailers</h3>
+                <ul class="first">
+                    <li><a href="https://www.youtube.com/user/VideoIMDb">Youtube</a></li>
+                    <li><a href="http://www.imdb.com/">IMDB</a></li>
+                </ul>
+            </div>
+            <div class="col_1_of_3 span_1_of_3">
+                <h3>Add Us</h3>
+                <ul class="first">
+                    <li><a href="https://www.pinterest.com/imdbofficial/">Pintrest</a></li>
+                    <li><a href="https://www.instagram.com/imdb/?hl=en">Instagram</a></li>
                 </ul>
             </div>
             <div class="clearfix"> </div>

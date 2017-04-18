@@ -43,7 +43,7 @@ $(document).ready(function() {
 							console.log("success");
 							console.log(response);
 							if(response.indexOf("not registered") > -1){
-							 	check_email = /^(.+)@(.+)+$/;
+							 	check_email = /\S+@\S+\.\S+/;
 								if(check_email.test(input_email) && input_email.length > 2){
 									status="Success";
 								}else{

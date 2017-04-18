@@ -147,19 +147,16 @@ define ('SITE_ROOT', realpath(dirname(__FILE__)));
 					  <div class="row_5">
 					  	<div class="col-md-6">
 							<div class="col_2">
-						   	    <ul class="list_4">
-					    			<li><i class="icon1"> </i><p>2,548</p></li>
-					    			<li><i class="icon2"> </i><p>215</p></li>
-					    			<li><i class="icon3"> </i><p>546</p></li>
-					    			<li>Rating : &nbsp;&nbsp;<p></p></li>
-					    			<div class="clearfix"> </div>
-					    		</ul>
-
+                <a href="single.php?id=11">
+ 					       <img src="images/movie_posters/9.jpg" style="width:190px;height:205px;" class="img-responsive" alt=""/>
+ 					     </a>
 						   </div>
 					   </div>
-					   <div class="col-md-6 m_6"><a href="single.php?id=9">
-						  <img src="images/movie_posters/7.jpg" style="width:190px;height:205px;" class="img-responsive" alt=""/>
-					   </a></div>
+					   <div class="col-md-6 m_6">
+               <a href="single.php?id=9">
+					       <img src="images/movie_posters/7.jpg" style="width:190px;height:205px;" class="img-responsive" alt=""/>
+					     </a>
+            </div>
 					  </div>
 					</div>
 					<div class="col-md-2 grid_6">
