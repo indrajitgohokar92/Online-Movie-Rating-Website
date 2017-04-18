@@ -16,7 +16,7 @@ if(isset($_SESSION["admin_update_movie"]) && isset($_SESSION["admin_update_pagin
   $pagingsql = $_SESSION["admin_update_paging_sql"];
   $querymovie =  $qmovie."$start_from, $limit;";
 }else{
-	$qmovie = "select movie_id, movies.movie_title, img_location from movies LIMIT ";
+	$qmovie = "select movies.movie_id, movies.movie_title, img_location from movies order by movies.movie_title LIMIT ";
 	$querymovie =  $qmovie."$start_from, $limit;";
 	$pagingsql = "select COUNT(movie_id) FROM movies;";
 	$_SESSION["admin_update_movie"]=$qmovie;

@@ -16,7 +16,7 @@ if(isset($_SESSION["admin_home_movie"]) && isset($_SESSION["admin_home_paging_sq
   $pagingsql = $_SESSION["admin_home_paging_sql"];
   $querymovie =  $qmovie."$start_from, $limit;";
 }else{
-	$qmovie = "select movie_id, movies.movie_title, img_location from movies where is_deleted='n' LIMIT ";
+	$qmovie = "select movies.movie_id, movies.movie_title, img_location from movies where is_deleted='n' order by movies.movie_title LIMIT ";
 	$querymovie =  $qmovie."$start_from, $limit;";
 	$pagingsql = "select COUNT(movie_id) FROM movies where is_deleted='n';";
 	$_SESSION["admin_home_movie"]=$qmovie;

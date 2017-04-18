@@ -18,7 +18,7 @@ $start_from = ($page-1) * $limit;
 if($_REQUEST['searchterm']!=null){
 
 	if((($search_term == "Search Movies...")||($search_term == "")) && ($movie_category == "all")){
-		$qmovie = "select movie_id, movies.movie_title, img_location from movies where is_deleted='n' LIMIT ";
+		$qmovie = "select movies.movie_id, movies.movie_title, img_location from movies where is_deleted='n' order by movies.movie_title LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
 		$pagingsql = "select COUNT(movie_id) FROM movies where is_deleted='n';";
 		$_SESSION["q_movie"]=$qmovie;
@@ -26,7 +26,7 @@ if($_REQUEST['searchterm']!=null){
 	} elseif((($search_term == "Search Movies...")||($search_term == "")) && !($movie_category == "all")) {
 		$qmovie = "select movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
-						and categories.category_name='".$movie_category."' and is_deleted='n' LIMIT ";
+						and categories.category_name='".$movie_category."' and is_deleted='n' order by movies.movie_title LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
 		$pagingsql = "select COUNT(movies.movie_id) from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
@@ -36,7 +36,7 @@ if($_REQUEST['searchterm']!=null){
 		} elseif(!($search_term == "Search Movies...") && ($movie_category == "all")) {
 		$qmovie = "select distinct movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
-						and movies.movie_title LIKE '$search_term%' and is_deleted='n' LIMIT ";
+						and movies.movie_title LIKE '$search_term%' and is_deleted='n' order by movies.movie_title LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
 		$pagingsql = "select COUNT(movies.movie_id) from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
@@ -46,7 +46,8 @@ if($_REQUEST['searchterm']!=null){
 	} else {
 		$qmovie = "select distinct movies.movie_id, movies.movie_title, movies.img_location from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
-						and categories.category_name='".$movie_category."' and movies.movie_title LIKE '$search_term%' and is_deleted='n'  LIMIT ";
+						and categories.category_name='".$movie_category."' and movies.movie_title LIKE '$search_term%' and is_deleted='n'
+						 order by movies.movie_title LIMIT ";
 		$querymovie =  $qmovie."$start_from, $limit;";
 		$pagingsql = "select COUNT(movies.movie_id) from movies,categories,movies_categories where
 						movies.movie_id=movies_categories.movie_id and categories.category_id=movies_categories.category_id
