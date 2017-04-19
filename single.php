@@ -225,7 +225,7 @@
                                     ?>
                             </p>
                             <?php
-                              if (isset($userId)) {
+                              if (isset($_SESSION['user_id'])) {
                                 echo '<form method="post" action="db/addcomment.php" id="commentform">
                                         <input type="hidden" name="user_id" id="user_id" value="'.$userId.'"/>
                                         <input type="hidden" name="movie_id" id="movie_id" value="'.$mov_id.'"/>
@@ -282,20 +282,17 @@
                                 <div class="grid_2">
                                     <a href="single.php?id=2"><img src="images/movie_posters/2.jpg" class="img-responsive" alt=""></a>
                                     <div class="caption1">
-                                        <i class="icon4 icon6 icon7"> </i>
                                     </div>
                                 </div>
                             </div>
                             <div class="grid_2 col_1">
                                 <a href="single.php?id=3"><img src="images/movie_posters/3.jpg" class="img-responsive" alt=""></a>
                                 <div class="caption1">
-                                    <i class="icon4 icon7"> </i>
                                 </div>
                             </div>
                             <div class="grid_2 col_1">
                                 <a href="single.php?id=1"><img src="images/movie_posters/1.jpg" class="img-responsive" alt=""></a>
                                 <div class="caption1">
-                                    <i class="icon4 icon7"> </i>
                                 </div>
                             </div>
                         </div>

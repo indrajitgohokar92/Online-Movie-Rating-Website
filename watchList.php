@@ -74,20 +74,17 @@
                                 <div class="grid_2">
                                     <a href="single.php?id=2"><img src="images/movie_posters/2.jpg" class="img-responsive" alt=""></a>
                                     <div class="caption1">
-                                        <i class="icon4 icon6 icon7"> </i>
                                     </div>
                                 </div>
                             </div>
                             <div class="grid_2 col_1">
                                 <a href="single.php?id=3"><img src="images/movie_posters/3.jpg" class="img-responsive" alt=""></a>
                                 <div class="caption1">
-                                    <i class="icon4 icon7"> </i>
                                 </div>
                             </div>
                             <div class="grid_2 col_1">
                                 <a href="single.php?id=1"><img src="images/movie_posters/1.jpg" class="img-responsive" alt=""></a>
                                 <div class="caption1">
-                                    <i class="icon4 icon7"> </i>
                                 </div>
                             </div>
                         </div>

@@ -20,9 +20,9 @@ if(isset($_SESSION["admin_home_movie"]) && isset($_SESSION["admin_home_paging_sq
   $pagingsql = $_SESSION["admin_home_paging_sql"];
   $querymovie =  $qmovie."$start_from, $limit;";
 }else{
-	$qmovie = "select movies.movie_id, movies.movie_title, img_location from movies where is_deleted='n' order by movies.movie_title LIMIT ";
+	$qmovie = "select movies.movie_id, movies.movie_title, img_location from movies order by movies.movie_title LIMIT ";
 	$querymovie =  $qmovie."$start_from, $limit;";
-	$pagingsql = "select COUNT(movie_id) FROM movies where is_deleted='n';";
+	$pagingsql = "select COUNT(movie_id) FROM movies;";
 	$_SESSION["admin_home_movie"]=$qmovie;
 	$_SESSION["admin_home_paging_sql"]=$pagingsql;
 }
@@ -71,7 +71,7 @@ $total_pages = ceil($total_records / $limit);
 					</div>
 					<div class="content">
 						<div class="box_1">
-						 <h1 class="m_2">Admin Home(Available Movie's)</h1>
+						 <h1 class="m_2">Admin Home(All Movies in DB)</h1>
 						 <div class="clearfix"> </div>
 						</div>
 							<div id="page-content" class="well">
