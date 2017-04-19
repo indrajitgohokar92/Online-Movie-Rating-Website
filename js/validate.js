@@ -105,7 +105,7 @@ $(document).ready(function() {
 	    		if (input.length < 4 ) { return "Password length less than 4 characters!"}
 
 	    		//password length
-	    		score += input.length * 4
+	    		score += input.length * 2
 
 			    //password has 3 numbers
 			    if (input.match(/(.*[0-9].*[0-9].*[0-9])/))  score += 5
