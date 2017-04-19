@@ -71,7 +71,7 @@ $total_pages = ceil($total_records / $limit);
 					</div>
 					<div class="content">
 						<div class="box_1">
-						 <h1 class="m_2">Add/Delete Movies</h1>
+						 <h1 class="m_2">Delete/Restore Movies</h1>
 						 <div class="clearfix"> </div>
 						</div>
 							<div id="page-content" class="well">

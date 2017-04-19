@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>
 <?php
 session_start();
-$search_term = trim($_REQUEST['searchterm']);
-$movie_category = $_REQUEST['moviegenre'];
-
+$search_term = trim($_POST['searchterm']);
+$movie_category = $_POST['moviegenre'];
 $movie_category = strtolower($movie_category);
 
 $dbcon = new mysqli("localhost", "root", "root", "moviedb");
@@ -76,14 +75,6 @@ $total_pages = ceil($total_records / $limit);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Movie_store" />
-	<!-- <script type="application/x-javascript">
-		 addEventListener("load", function() {
-		 	setTimeout(hideURLbar, 0);
-		 }, false);
-		 function hideURLbar(){
-		 	window.scrollTo(0,1);
-		 }
-	</script> -->
 	<link href="css/bootstrap-datepicker.css" rel='stylesheet' type='text/css' />
 	<!-- <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -112,7 +103,7 @@ $total_pages = ceil($total_records / $limit);
 										<tr>
 											<?php
 												if(mysqli_num_rows($movieresult)== 0){
-				   								echo "<td><h4 class='m_2'>No Results!</h4></td>";
+				   								echo "<td><h4 class='m_2'>Enter a word or phrase to search on.</h4></td>";
 												}else{
 													while ($row = mysqli_fetch_array($movieresult)) {
 														$imgloc = $row["img_location"];
