@@ -169,8 +169,14 @@
                                         echo "<p class='movie_option'><strong>Release Date (Y-M-D): </strong>".$row2['release_date']."</p>";
                                         echo "<p class='movie_option'><strong>Year of Release: </strong>".$row2['year_of_release']."</p>";
                                         echo "<p class='movie_option'><strong>Average Critics Rating: </strong>".$row2['avg_critics_rating']."</p>";
-                                        if(isset($userId) and isset($yourRating) and $adminLogin == 'n'){  echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating; }
-                                        else{echo "<p class='movie_option'><strong>Your Rating: </strong>"."No Rating"; }
+                                        if(isset($userId) and $adminLogin == 'n'){
+                                          if(isset($yourRating)){
+                                            echo "<p class='movie_option'><strong>Your Rating: </strong>".$yourRating;
+                                          }
+                                          else{
+                                            echo "<p class='movie_option'><strong>Your Rating: </strong>"."No Rating";
+                                          }
+                                        }
                                         echo "<p class='movie_option'><strong>Age Restriction: </strong>".$row2['age_restriction']."</p>";
                                     }
                                     ?>
@@ -219,7 +225,7 @@
                                     ?>
                             </p>
                             <?php
-                              if (isset($userId) and $adminLogin == 'n') {
+                              if (isset($userId)) {
                                 echo '<form method="post" action="db/addcomment.php" id="commentform">
                                         <input type="hidden" name="user_id" id="user_id" value="'.$userId.'"/>
                                         <input type="hidden" name="movie_id" id="movie_id" value="'.$mov_id.'"/>

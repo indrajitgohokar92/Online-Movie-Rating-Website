@@ -47,8 +47,8 @@ if(isset($username) and $adminLogin == 'y'){
       </button>
       <ul class="dropdown-menu">
         <li><a href="adminhome.php">Admin Home</a></li>
-        <li><a href="addmovie.php">Add Movies</a></li>
-        <li><a href="deletemovie.php">Add/Delete Movie</a></li>
+        <li><a href="addmovie.php">Add New Movie</a></li>
+        <li><a href="deletemovie.php">Delete Movie</a></li>
         <li><a href="updatemovies.php">Update Movie</a></li>
       </ul>
     </li>

@@ -1,5 +1,11 @@
 <!DOCTYPE HTML>
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])){ //if login in session is not set
+		$port = $_SERVER['SERVER_PORT'];
+		$locationUrl = "http://localhost:".$port."/index.php";
+		header("Location:".$locationUrl);
+}
 $mov_id = $_GET['id'];
 $dbcon = new mysqli("localhost", "root", "root", "moviedb");
 

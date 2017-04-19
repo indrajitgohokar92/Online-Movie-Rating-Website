@@ -8,8 +8,8 @@ $(document).ready(function() {
 	var movietitleValidator = fieldValidator(
 			$('#movietitle'),"The Movie Title must contain only alphanumeric characters and must not be empty",function(input) {
 				if (input.length < 2) { return "Movie Title is too short!"}
-				check_fname = /^[A-Za-z_ ]+$/;
-				if(check_fname.test(input)){
+				check_movie = /^[0-9A-Za-z_ ]+$/;
+				if(check_movie.test(input)){
 					return "Success"
 				}else{
 						return "Should contain alphabetical characters only!"
@@ -20,8 +20,8 @@ $(document).ready(function() {
   var countryValidator = fieldValidator(
 			$('#country'),"The Country must contain only alphabetical characters and must not be empty",function(input) {
 				if (input.length < 2) { return "Country name is too short!"}
-				check_fname = /^[A-Za-z_ ]+$/;
-				if(check_fname.test(input)){
+				check_country = /^[A-Za-z_ ]+$/;
+				if(check_country.test(input)){
 					return "Success"
 				}else{
 						return "Should contain alphabetical characters only!"
@@ -29,11 +29,11 @@ $(document).ready(function() {
 			}
 	);
   var agerestrictionValidator = fieldValidator(
-			$('#agerestriction'),"The Age Restriction must contain only alphabetical characters and must not be empty",function(input) {
+			$('#agerestriction'),"The Age Restriction must contain only alphanumeric characters and must not be empty",function(input) {
 				if (input.length < 1) { return "Age Restriction is too short!"}
-				if (input.length > 2) { return "Age Restriction is too long!"}
-				check_fname = /^[A-Za-z_ ]+$/;
-				if(check_fname.test(input)){
+				if (input.length > 4) { return "Age Restriction is too long!"}
+				check_age = /^[0-9A-Za-z_ ]+$/;
+				if(check_age.test(input)){
 					return "Success"
 				}else{
 						return "Should contain alphabetical characters only!"
@@ -53,9 +53,9 @@ $(document).ready(function() {
   var criticsratingValidator = fieldValidator(
 			$('#criticsrating'),"The Critics rating must not be empty",function(input) {
 				if (input.length < 1) { return "Critics rating invalid!"}
-				if (input.length > 3) { return input.length}
-				check_fname = /^[0-9].[0-9]+$/;
-				if(check_fname.test(input)){
+				if (input.length > 3) { return "Critics rating invalid!"}
+				check_critics = /^[0-9].[0-9]+$/;
+				if(check_critics.test(input)){
 					return "Success"
 				}else{
 						return "Should be between 1.0-9.9 only!"
@@ -66,8 +66,8 @@ $(document).ready(function() {
   var releaseyearValidator = fieldValidator(
 			$('#releaseyear'),"The Release year must not be empty",function(input) {
 				if (!(input.length == 4)) { return "Release year should be 4 digit number!"}
-				check_fname = /^[0-9]+$/;
-				if(check_fname.test(input)){
+				check_year = /^[0-9]+$/;
+				if(check_year.test(input)){
 					return "Success"
 				}else{
 						return "Should contain numbers only!"
@@ -79,8 +79,8 @@ $(document).ready(function() {
 			$('#audiencerating'),"The audience rating must not be empty",function(input) {
 				if (input.length < 1) { return "Audience rating invalid!"}
 				if (input.length > 3) { return "Audience rating invalid!"}
-				check_fname = /^[0-9].[0-9]+$/;
-				if(check_fname.test(input)){
+				check_audience = /^[0-9].[0-9]+$/;
+				if(check_audience.test(input)){
 					return "Success"
 				}else{
 						return "Should be between 1.0-9.9 only!"

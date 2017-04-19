@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var movietitleValidator = fieldValidator(
 			$('#movietitle'),"The Movie Title must contain only alphanumeric characters and must not be empty",function(input) {
 				if (input.length < 2) { return "Movie Title is too short!"}
-				check_fname = /^[A-Za-z_ ]+$/;
+				check_fname = /^[0-9A-Za-z_ ]+$/;
 				if(check_fname.test(input)){
 					return "Success"
 				}else{
@@ -29,10 +29,10 @@ $(document).ready(function() {
 			}
 	);
   var agerestrictionValidator = fieldValidator(
-			$('#agerestriction'),"The Age Restriction must contain only alphabetical characters and must not be empty",function(input) {
+			$('#agerestriction'),"The Age Restriction must contain only alphanumeric characters and must not be empty",function(input) {
 				if (input.length < 1) { return "Age Restriction is too short!"}
 				if (input.length > 2) { return "Age Restriction is too long!"}
-				check_fname = /^[A-Za-z_ ]+$/;
+				check_fname = /^[0-9A-Za-z_ ]+$/;
 				if(check_fname.test(input)){
 					return "Success"
 				}else{

@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if(!isset($_SESSION['user_id'])){ //if login in session is not set
+    		$port = $_SERVER['SERVER_PORT'];
+    		$locationUrl = "http://localhost:".$port."/index.php";
+    		header("Location:".$locationUrl);
+    }
     $username = $_SESSION['username'];
     $adminLogin = $_SESSION['isAdmin'];
 
