@@ -44,8 +44,12 @@ $(document).ready(function() {
 							console.log(response);
 							if(response.indexOf("not registered") > -1){
 							 	check_email = /\S+@\S+\.\S+/;
-								if(check_email.test(input_email) && input_email.length > 2){
-									status="Success";
+								if(check_email.test(input_email)){
+									if(input_email.length > 2){
+										status="Success";
+									}else{
+											status="Email too short!";
+									}
 								}else{
 									status="Incorrect email format!";
 								}
@@ -84,8 +88,12 @@ $(document).ready(function() {
 							console.log(response);
 							if(response.indexOf("not registered") > -1){
 							 	check_username = /^[0-9A-Za-z]+$/;
-								if(check_username.test(input_username) && input_username.length > 2){
-									status="Success";
+								if(check_username.test(input_username)){
+									if(input_username.length > 2){
+										status="Success";
+									}else{
+										status="Username too short!";
+									}
 								}else{
 									status="Should contain alphanumeric characters only!";
 								}
