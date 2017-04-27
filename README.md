@@ -1,2 +1,2 @@
-# imdb-website
-Imdb website
+# movieDB-website
+MovieDB website
